@@ -272,10 +272,23 @@ def merger_manifest_resource(task_id, temp_path, channel_path, channel_id, chann
             logger.info(u'游戏添加 supports-screens : ' + str(game_add_supports_screens))
 
         logger.info(u'开始合并application....')
+        game_has_application_child = []
+        if game_application:
+            for game_application_child in game_application[0].childNodes:
+                if game_application_child.nodeType == 1:
+                    game_child_name = game_application_child.getAttribute('android:name')
+                    game_has_application_child.append(game_child_name)
+        logger.info(u'游戏已存在 application-child : ' + str(game_has_application_child))
+
+        game_add_application_child = []
         if channel_application:
-            for i in channel_application[0].childNodes:
-                if i.nodeType == 1:
-                    game_application[0].appendChild(i)
+            for channel_application_child in channel_application[0].childNodes:
+                if channel_application_child.nodeType == 1:
+                    channel_child_name = channel_application_child.getAttribute('android:name')
+                    if channel_child_name not in game_has_application_child:
+                        game_application[0].appendChild(channel_application_child)
+                        game_add_application_child.append(channel_child_name)
+        logger.info(u'游戏添加 application-child : ' + str(game_add_application_child))
 
         # 保存修改后的文件
         fp = open(game_AndroidManifest, 'w')
