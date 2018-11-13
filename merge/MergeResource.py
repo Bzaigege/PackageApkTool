@@ -309,7 +309,7 @@ def merge_icon_resource(temp_path, channel_path, layout=RIGHT_BOTTOM):
 
     channel_icon_path = os.path.join(channel_path, 'icon')
     if not os.path.isdir(channel_icon_path):
-        return 1, u'渠道icon目录不存在，无法进行合并'
+        return 0, u'渠道icon目录不存在，无法进行合并'
 
     channel_icon_name = '%s.png' % layout
 
@@ -353,6 +353,9 @@ def merge_icon_resource(temp_path, channel_path, layout=RIGHT_BOTTOM):
 
                 else:
                     icon_merge_path = ''
+                    
+                if not icon_merge_path:
+                    return 0, u"无下标,不合并"
 
                 status, result = mark_icon(icon_path, icon_merge_path, icon_path)
                 if not status == 0:
