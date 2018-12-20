@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03f8fd19-402d-40ee-ac64-9b99d4305295" name="Default" comment="" />
+    <list default="true" id="03f8fd19-402d-40ee-ac64-9b99d4305295" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +17,7 @@
       <file leaf-file-name="BuildApkTask.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BuildApkTask.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="715">
+            <state relative-caret-position="4692">
               <caret line="279" column="31" selection-start-line="279" selection-start-column="31" selection-end-line="279" selection-end-column="31" />
             </state>
           </provider>
@@ -32,8 +35,8 @@
       <file leaf-file-name="MergeResource.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/merge/MergeResource.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="109" column="49" lean-forward="true" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="55" />
+            <state relative-caret-position="1802">
+              <caret line="109" column="49" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="55" />
               <folding>
                 <element signature="e#47#75#0" expanded="true" />
               </folding>
@@ -44,8 +47,8 @@
       <file leaf-file-name="MergeUtils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/merge/MergeUtils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2198">
-              <caret line="241" column="38" lean-forward="true" selection-start-line="241" selection-start-column="38" selection-end-line="241" selection-end-column="38" />
+            <state relative-caret-position="3978">
+              <caret line="241" column="38" selection-start-line="241" selection-start-column="38" selection-end-line="241" selection-end-column="38" />
               <folding>
                 <element signature="e#70#79#0" expanded="true" />
               </folding>
@@ -56,8 +59,8 @@
       <file leaf-file-name="ModifyChannelAssets.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/channel/ModifyChannelAssets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="289">
+              <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -76,6 +79,9 @@
       <find>print</find>
       <find>pr</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -118,90 +124,52 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-6" />
     <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="height" value="1092" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
+              <item name="PackageApkTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PackageApkTool" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
+              <item name="PackageApkTool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PackageApkTool" type="462c0819:PsiDirectoryNode" />
               <item name="channel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
-              <item name="WorkSpace" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
-              <item name="WorkSpace" type="462c0819:PsiDirectoryNode" />
-              <item name="BuildApk" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
-              <item name="WorkSpace" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
-              <item name="WorkSpace" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Games" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
-              <item name="WorkSpace" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Games" type="462c0819:PsiDirectoryNode" />
-              <item name="1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BuildChannelApkTool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BuildChannelApkTool" type="462c0819:PsiDirectoryNode" />
-              <item name="WorkSpace" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Games" type="462c0819:PsiDirectoryNode" />
-              <item name="1" type="462c0819:PsiDirectoryNode" />
-              <item name="1.0.0" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\WorkSpace\Resources\ChannelSDKs\1\1.0.0" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\utils" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\WorkSpace\Resources\ChannelSDKs\1\1.0.0\libs" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\WorkSpace\Resources\ChannelSDKs\1\1.0.0\assets" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\channel\Test\Game\lib" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\WorkSpace\Resources\ChannelSDKs\1\1.0.0" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\utils" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\WorkSpace\Resources\ChannelSDKs\1\1.0.0\libs" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\WorkSpace\Resources\ChannelSDKs\1\1.0.0\assets" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\channel\Test\Game\lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\channel" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\merge" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\utils" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool" />
-      <recent name="G:\suyu\xiaozhanxin\Python_Project\BuildChannelApkTool\Codes" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\channel" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\merge" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\utils" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool" />
+      <recent name="G:\suyu\xiaozhanxin\Python_Project\PackageApkTool\Codes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -218,7 +186,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="BuildChannelApkTool" />
+      <module name="PackageApkTool" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -252,17 +220,24 @@
       <option name="presentableId" value="Default" />
       <updated>1539848037899</updated>
     </task>
+    <task id="LOCAL-00001" summary="github test : 更新配置信息">
+      <created>1545272601851</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1545272601852</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28082192" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.57005346" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32964602" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
@@ -279,6 +254,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="github test : 更新配置信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="github test : 更新配置信息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -297,9 +276,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="79" column="50" lean-forward="true" selection-start-line="79" selection-start-column="50" selection-end-line="79" selection-end-column="50" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -472,13 +448,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/ntpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/ntpath.py" />
     <entry file="file://$PROJECT_DIR$/ModifyChannelWxCallBack.py" />
     <entry file="file://$PROJECT_DIR$/channel/Test/Channel/wxcallback/WXEntryActivity.java" />
     <entry file="file://$PROJECT_DIR$/channel/ModifyChannelWxCallBack.py">
@@ -496,13 +466,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WorkSpace/BuildApk/ResourceData/180/Configs/1/1/1.0.0/build_config.json" />
-    <entry file="file://$PROJECT_DIR$/venv/Lib/os.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="156" selection-start-line="156" selection-end-line="156" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/os.py" />
     <entry file="file://$PROJECT_DIR$/channel/ModifyResourceUtils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4259">
@@ -535,9 +499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2295">
           <caret line="135" column="12" selection-start-line="135" selection-start-column="4" selection-end-line="135" selection-end-column="12" />
-          <folding>
-            <element signature="e#67#84#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -545,9 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="851">
           <caret line="62" column="24" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
-          <folding>
-            <element signature="e#46#79#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -555,15 +513,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BuildApkTask.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
+        <state relative-caret-position="4692">
           <caret line="279" column="31" selection-start-line="279" selection-start-column="31" selection-end-line="279" selection-end-column="31" />
         </state>
       </provider>
@@ -577,8 +532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/merge/MergeResource.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="109" column="49" lean-forward="true" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="55" />
+        <state relative-caret-position="1802">
+          <caret line="109" column="49" selection-start-line="109" selection-start-column="37" selection-end-line="109" selection-end-column="55" />
           <folding>
             <element signature="e#47#75#0" expanded="true" />
           </folding>
@@ -587,8 +542,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/merge/MergeUtils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2198">
-          <caret line="241" column="38" lean-forward="true" selection-start-line="241" selection-start-column="38" selection-end-line="241" selection-end-column="38" />
+        <state relative-caret-position="3978">
+          <caret line="241" column="38" selection-start-line="241" selection-start-column="38" selection-end-line="241" selection-end-column="38" />
           <folding>
             <element signature="e#70#79#0" expanded="true" />
           </folding>
@@ -597,8 +552,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/channel/ModifyChannelAssets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="289">
+          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
         </state>
       </provider>
     </entry>
