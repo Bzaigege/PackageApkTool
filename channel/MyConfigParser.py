@@ -1,4 +1,5 @@
-# coding:utf8
+#!/usr/bin/env python
+# -*-coding:utf-8 -*-
 """Configuration file parser.
 A setup file consists of sections, lead by a "[section]" header,
 and followed by "name: value" entries, with continuations and such in
