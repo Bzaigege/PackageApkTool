@@ -5,8 +5,15 @@
 # 修改渠道资源库: 用于处理修改渠道资源的库代码
 #
 
-import os,re,platform
+import os,re,platform,json,shutil,codecs
+from utils.ShellUtils import *
 from xml.etree import ElementTree as ET
+
+
+namespace = '{http://schemas.android.com/apk/res/android}'
+Node_name = namespace + 'name'
+Node_value = namespace + 'value'
+Node_scheme = namespace + 'scheme'
 
 
 # 找某个名称的文件，可能存在多个文件夹里面，如strings.xml就可能存在在values/values-xxx里，需要批量修改
@@ -49,8 +56,8 @@ def modify_manifest_package_name(channel_path, compile):
     modify_manifest_path = os.path.join(channel_path, 'AndroidManifest.xml')
 
     game_package_name = ''
-    if compile.has_key('package'):  # 游戏包名
-        game_package_name = compile['package']
+    if compile.has_key(CONF_package):  # 游戏包名
+        game_package_name = compile[CONF_package]
 
     if game_package_name:
         # 注意特殊字符问题，需先转义
@@ -106,7 +113,7 @@ def get_activity_list(tree):
     activity_node_list = find_activity_nodes(tree)
     activity_list = []
     for node in activity_node_list:
-        activity_list.append(node.get('{http://schemas.android.com/apk/res/android}name'))
+        activity_list.append(node.get(Node_name))
 
     return activity_list
 
@@ -117,7 +124,7 @@ def get_manifest_service_list(tree):
     service_node_list = find_service_nodes(tree)
     service_list = []
     for node in service_node_list:
-        service_list.append(node.get('{http://schemas.android.com/apk/res/android}name'))
+        service_list.append(node.get(Node_name))
 
     return service_list
 
@@ -128,7 +135,7 @@ def get_manifest_receiver_list(tree):
     receiver_node_list = find_receiver_nodes(tree)
     receiver_list = []
     for node in receiver_node_list:
-        receiver_list.append(node.get('{http://schemas.android.com/apk/res/android}name'))
+        receiver_list.append(node.get(Node_name))
 
     return receiver_list
 
@@ -139,7 +146,7 @@ def get_manifest_provider_list(tree):
     provider_node_list = find_provider_nodes(tree)
     provider_list = []
     for node in provider_node_list:
-        provider_list.append(node.get('{http://schemas.android.com/apk/res/android}name'))
+        provider_list.append(node.get(Node_name))
 
     return provider_list
 
@@ -150,7 +157,7 @@ def get_manifest_metadata_list(tree):
     metadata_node_list = find_metadata_nodes(tree)
     metadata_list = []
     for node in metadata_node_list:
-        metadata_list.append(node.get('{http://schemas.android.com/apk/res/android}name'))
+        metadata_list.append(node.get(Node_name))
 
     return metadata_list
 
@@ -165,7 +172,7 @@ def find_nodes(tree, path):
 # 根据属性 name 返回该节点
 def find_node_by_name(nodes_list, name):
 
-    key_value = {'{http://schemas.android.com/apk/res/android}name':name}
+    key_value = {Node_name: name}
     for node in nodes_list:
         if node_match(node, key_value):
             return node
@@ -266,6 +273,19 @@ def delete_file_specific_row(file_path, text):
     fw.close()
 
 
+# 清空文本并写入指定内容
+def modify_text(file_path, text):
+
+    fr = open(file_path, "r+")
+    fr.seek(0)
+    fr.truncate()
+    fr.close()
+
+    fw = codecs.open(file_path, "w", 'utf-8')
+    fw.write(text)
+    fw.close()
+
+
 # 获取文件列表
 def get_file_list(libs_path, suffix_test):
 
@@ -277,17 +297,17 @@ def get_file_list(libs_path, suffix_test):
     return jar_path_list
 
 
-# 获取相关联的jar包路径
+# 获取相关联的jar包路径(绝对路径)
 def get_compile_class_path(temp_path, tools_path):
 
     class_path = ''
     jar_list = get_file_list(os.path.join(temp_path, 'lib'), '.jar')
     for jar_path in jar_list:
         if class_path.strip():
-            class_path = class_path + get_system_delimiter();
-        class_path = class_path + jar_path
+            class_path = class_path + get_system_delimiter()
+        class_path = class_path + os.path.join(os.getcwd(), jar_path)
 
-    android_jar_path = os.path.join(tools_path, 'android.jar')
+    android_jar_path = os.path.join(os.getcwd(), tools_path, 'android.jar')
     class_path = class_path + get_system_delimiter() + android_jar_path
     return class_path
 
@@ -299,4 +319,59 @@ def get_system_delimiter():
         return ';'
     else:
         return ':'
+
+
+# 编译微信回调类
+def modify_wx_resource(tools_path, temp_path, channel_path, config, wx_file_name):
+
+    try:
+
+        wx_callback_dir = os.path.join(channel_path, 'wxcallback')
+
+        # 处理下.java文件，不然会报编码错误
+        java_list = get_file_list(wx_callback_dir, '.java')
+        for java_file in java_list:
+            delete_java_note(java_file)
+
+        package_name = ''
+        if config.has_key(CONF_package):
+            package_name = config[CONF_package]
+
+        # 处理包名问题：
+        if package_name:
+            wx_callback_file = os.path.join(wx_callback_dir, wx_file_name)
+            new_package_str = 'package ' + package_name + '.wxapi;'
+            # 删除包名所在行
+            delete_file_specific_row(wx_callback_file, 'package')
+            # 添加新的包名在第一行
+            write_file_insert_specific_row(wx_callback_file, 0, new_package_str)
+
+        # 将.java文件转化为.class文件
+        wx_callback_class_dir = os.path.join(channel_path, 'wxcallback', 'class')
+        if not os.path.exists(wx_callback_class_dir):
+            os.makedirs(wx_callback_class_dir)
+
+        class_resource = get_compile_class_path(temp_path, tools_path)
+        real_class_output_path = os.path.join(os.getcwd(), wx_callback_class_dir)
+        status, result = java_compile_class(wx_callback_dir, class_resource, real_class_output_path)
+        if not status == 0:
+            return status, result
+
+        # 将.class文件打包成.jar文件
+        wx_jar = 'wx_callback.jar'
+        wx_callback_jar_path = os.path.join(temp_path, 'lib')
+        status, result = class_compile_jar(wx_callback_class_dir, wx_jar)
+        if not status == 0:
+            return status, result
+        else:
+            shutil.move(os.path.join(wx_callback_class_dir, wx_jar), wx_callback_jar_path)
+
+        if os.path.exists(wx_callback_jar_path):
+            shutil.rmtree(wx_callback_class_dir)
+            return 0, u'modify wx_callback success'
+        else:
+            return 1, u'modify wx_callback fail'
+
+    except Exception as e:
+        return 1, u'modify wx_callback fail, %s' % e
 

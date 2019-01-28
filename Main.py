@@ -23,8 +23,7 @@ def startBuildApkTask():
     """
 
     # 基准包任务
-    task = BuildApkTask('180', 'TESTGame', '1', '1.0.0', 'GameSDKFrame.apk', '1', '1.0.0')
-    # task = BuildApkTask('180', 'TESTGame', '2', '1.0.0', 'jyywl.apk', '1', '1.0.0')
+    task = BuildApkTask('180', 'TESTGame', '1', '1.0.0', 'GameSDKFrame.apk', 'lexiang' '1', '1.0.0')
     # 开始打包任务
     task.buildApk()
 
