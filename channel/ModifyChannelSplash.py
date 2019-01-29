@@ -129,7 +129,7 @@ def sdk_first_splash(channel_id, channel_version, activity_nodes, launcher_activ
                     activity.setAttribute('android:name', gameMainActivity)
 
 
-# 联想渠道，需将游戏入口SYSDK.MAIN改为lenovoid.MAIN
+# 联想渠道，需将游戏入口Bzai.MAIN改为lenovoid.MAIN
 def modify_lenovo_splash(channel_version, sdk_tag_activities, gameMainActivity=None):
 
     lenovo_splash_activity_name = 'com.lenovo.lsf.gamesdk.ui.WelcomeActivity'
@@ -137,7 +137,7 @@ def modify_lenovo_splash(channel_version, sdk_tag_activities, gameMainActivity=N
     modify_channel_splash(lenovo_splash_activity_name, lenovo_splash_activity_tag, sdk_tag_activities, gameMainActivity)
 
 
-# 当乐渠道，需将原游戏配置入口SYSDK.MAIN去掉,保留SdkLoadActivity下的配置就可以了
+# 当乐渠道，需将原游戏配置入口Bzai.MAIN去掉,保留SdkLoadActivity下的配置就可以了
 # 且在修改SdkLoadActivity属性时，已修改游戏主入口
 def modify_dangle_splash(channel_version, sdk_tag_activities, gameMainActivity=None):
 
@@ -153,7 +153,7 @@ def modify_dangle_splash(channel_version, sdk_tag_activities, gameMainActivity=N
         game_main_activity.removeChild(game_main_activity_filter)
 
 
-# 游戏Fan渠道，需将游戏入口SYSDK.MAIN改为YouXiFan.MAIN
+# 游戏Fan渠道，需将游戏入口Bzai.MAIN改为YouXiFan.MAIN
 def modify_youxifan_splash(channel_version, sdk_tag_activities, gameMainActivity=None):
 
     youxifan_splash_activity_name = 'com.suyutech.sysdk.channel.youxiFan.YouxiFanSplashActivity'
@@ -161,7 +161,7 @@ def modify_youxifan_splash(channel_version, sdk_tag_activities, gameMainActivity
     modify_channel_splash(youxifan_splash_activity_name, youxifan_splash_activity_tag, sdk_tag_activities, gameMainActivity)
 
 
-# 易接渠道，需将游戏入口SYSDK.MAIN改为YiJie.MAIN
+# 易接渠道，需将游戏入口Bzai.MAIN改为YiJie.MAIN
 def modify_yijie_splash(channel_version, sdk_tag_activities, gameMainActivity=None):
 
     yijie_splash_activity_name = 'com.suyutech.sysdk.channel.yijie.YijieSplashActivity'
@@ -169,7 +169,7 @@ def modify_yijie_splash(channel_version, sdk_tag_activities, gameMainActivity=No
     modify_channel_splash(yijie_splash_activity_name, yijie_splash_activity_tag, sdk_tag_activities, gameMainActivity)
 
 
-# 乐游渠道，需将游戏入口SYSDK.MAIN改为LeYou.MAIN
+# 乐游渠道，需将游戏入口Bzai.MAIN改为LeYou.MAIN
 def modify_leyou_splash(channel_version, sdk_tag_activities, gameMainActivity=None):
 
     leyou_splash_activity_name = 'com.suyutech.sysdk.channel.leyou.LeyouSplashActivity'
@@ -177,7 +177,7 @@ def modify_leyou_splash(channel_version, sdk_tag_activities, gameMainActivity=No
     modify_channel_splash(leyou_splash_activity_name, leyou_splash_activity_tag, sdk_tag_activities, gameMainActivity)
 
 
-# 果盘渠道，需将游戏入口SYSDK.MAIN改为com.flamingo.sdk.MAIN
+# 果盘渠道，需将游戏入口Bzai.MAIN改为com.flamingo.sdk.MAIN
 def modify_guopan_splash(channel_version, sdk_tag_activities, gameMainActivity=None):
 
     guopan_splash_activity_name = 'com.flamingo.sdk.view.GPSplashActivity'
@@ -185,7 +185,7 @@ def modify_guopan_splash(channel_version, sdk_tag_activities, gameMainActivity=N
     modify_channel_splash(guopan_splash_activity_name, guopan_splash_activity_tag, sdk_tag_activities, gameMainActivity)
 
 
-# 朋友玩渠道，需将游戏入口SYSDK.MAIN改为${applicationId}.pyw.MAIN
+# 朋友玩渠道，需将游戏入口Bzai.MAIN改为${applicationId}.pyw.MAIN
 def modify_pengyouwan_splash(channel_version, sdk_tag_activities, package_name, gameMainActivity=None):
 
     pyw_splash_activity_name = 'com.pengyouwan.sdk.activity.LauncherActivity'
@@ -207,7 +207,7 @@ def modify_channel_splash(channel_splash_activity_name, channel_splash_activity_
     game_main_activity_filter = game_main_activity.getElementsByTagName('intent-filter')[0]
     game_main_activity_actions = game_main_activity_filter.getElementsByTagName('action')
     for tag_action in game_main_activity_actions:
-        if tag_action.getAttribute('android:name') == 'SYSDK.MAIN':
+        if tag_action.getAttribute('android:name') == 'Bzai.MAIN':
             tag_action.setAttribute('android:name', channel_splash_activity_tag)
 
     # 需改游戏入口的名称
