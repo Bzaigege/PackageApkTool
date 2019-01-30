@@ -139,7 +139,7 @@ class GuiMainFrame(wx.Frame):
         self.panel.SetSizer(self.packageLayout)
 
         # 读取上一次的配置信息
-        self.setConfig = os.path.join('uiconfig')
+        self.setConfig = os.path.join('WorkSpace', 'UIConfig')
         try:
             if os.path.exists(os.path.join(self.setConfig, "uiConfig.json")):
                 with open(os.path.join(self.setConfig, "uiConfig.json"), 'r') as uiConfig:
