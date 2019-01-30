@@ -50,3 +50,13 @@ GameSDKFrame.apk 为模拟已接入测试渠道SDK的游戏母包
 lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道版本。 内置为渠道资源目录
 
 启动UIMain.exe后依次选择资源。然后打包运行。
+
+![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/%E6%89%93%E5%8C%85.gif)
+
+
+
+
+
+
+
+
