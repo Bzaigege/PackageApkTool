@@ -36,7 +36,7 @@ DeskDemo：
 
 ![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/DeskDemoDir.png)
 
-uiconfig和WorkSpace为目录，UIMain.exe为可执行文件
+WorkSpace为工作目录，UIMain.exe为可执行文件
 
 PackageResource：
 
@@ -56,6 +56,8 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 编译过程用到的参数都可以在这里配置对饮的Key_Value值，但是涉及到渠道参数的配置的时候，需要修改渠道适配代码读取Key值
 [代码地址](https://github.com/Bzaigege/PackageApkTool/tree/master/channel/special)
 
+目前只适配十多常用渠道，如果有拓展，可自行添加代码修改。也可以贡献代码上传到该库
+
 ### 渠道资源包说明：
 格式为：渠道名_渠道ID_渠道版本。 内置为渠道资源目录 
 ![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/channelresource.png)
@@ -70,7 +72,8 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 * AndroidManifest.xml 为渠道配置文件，与游戏AndroidManifest.xml合并
 
 ## 项目打包成exe文件
-进入到项目的根目录，在当前目录下找到UIMain.spec文件，修改pathex=['项目根目录路径']为当前项目目录根路径，执行pyinstaller -F UIMain.spec即可
+首先需要安装pyinstaller模块，可自行搜索安装。
+然后进入到项目的根目录，在当前目录下找到UIMain.spec文件，修改pathex=['项目根目录路径']为当前项目目录根路径，执行pyinstaller -F UIMain.spec即可
 
 ## 项目资料参考
 
