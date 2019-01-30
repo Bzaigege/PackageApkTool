@@ -1,5 +1,4 @@
 # PackageApkTool
-#
 
 ## 项目介绍
 PackageApkTool 为手游SDK联运系统打包系统部分核心模块，用于快速便捷的帮助游戏包打入渠道SDK资源生成游戏-渠道包，快速上架渠道上线。
@@ -36,15 +35,13 @@ PackageApkTool 为手游SDK联运系统打包系统部分核心模块，用于�
 
 DeskDemo： 
 
-
+![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/DeskDemoDir.png)
 
 uiconfig和WorkSpace为目录，UIMain.exe为可执行文件
 
 PackageResource：
 
-* build_config.json
-* GameSDKFrame.apk
-* lexiang_1_1.0.0.zip
+![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/PackageResourceDir.png)
 
 build_config.json 为打包编译参数配置，可根据不同的渠道需求定制不同的key_value值
 GameSDKFrame.apk 为模拟已接入测试渠道SDK的游戏母包
