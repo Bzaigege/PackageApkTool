@@ -14,12 +14,11 @@ from ConfigUtils import *
 # 执行cmd命令
 def execute_command(cmd):
     # status, result = subprocess.getstatusoutput(cmd)  #  python3.4
-    # print u'%s' % cmd
+    print u'%s\n' % cmd
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     sout, serr = res.communicate()
 
-    # sout.decode('cp936').encode('utf-8') 打包exe后，控制台会乱码
-    print sout
+    print sout.decode('cp936').encode('utf-8') # 打包exe后，控制台会乱码
     return res.returncode, sout.decode('cp936').encode('utf-8')
 
 
