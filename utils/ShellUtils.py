@@ -15,10 +15,11 @@ from ConfigUtils import *
 def execute_command(cmd):
     # status, result = subprocess.getstatusoutput(cmd)  #  python3.4
     print u'%s\n' % cmd
-    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    res = subprocess.Popen(cmd, shell=isinstance(cmd, basestring), stdin=subprocess.PIPE,
+                           stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     sout, serr = res.communicate()
 
-    print sout.decode('cp936').encode('utf-8') # 打包exe后，控制台会乱码
+    print sout.decode('cp936').encode('utf-8')
     return res.returncode, sout.decode('cp936').encode('utf-8')
 
 
