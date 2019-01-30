@@ -44,7 +44,9 @@ PackageResource：
 ![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/PackageResourceDir.png)
 
 build_config.json 为打包编译参数配置，可根据不同的渠道需求定制不同的key_value值
+
 GameSDKFrame.apk 为模拟已接入测试渠道SDK的游戏母包
+
 lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道版本。 内置为渠道资源目录
 
 启动UIMain.exe后依次选择资源。然后打包运行。
