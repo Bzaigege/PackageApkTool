@@ -28,7 +28,7 @@ PackageApkTool 为手游SDK联运系统打包系统核心模块，用于快速�
 * 打包过程的日志信息显示
 
 
-## 项目功能使用
+## 项目功能使用示例
 
 首先下载PackageApkTool项目中的DeskDemo.zip和PackageResource.zip两个压缩包，解压后，目录结构如下：
 
