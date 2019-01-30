@@ -19,7 +19,7 @@ def create_r_files(task_id, tools_path, temp_path, channel_path, channel_id, cha
         return status, result
 
     r_packages = []
-    if build_config.has_key('R_package'):
+    if build_config.has_key('R_package'): # R_package为字符数组["a","b"]
         r_packages = build_config['R_package']
 
     if r_packages:
