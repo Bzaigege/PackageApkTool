@@ -7,11 +7,10 @@ PackageApkTool 为手游SDK联运系统打包系统部分核心模块，用于�
 ## 项目前提
 使用该项目的前提条件是，游戏包体已经接入手游SDK框架Demo的SDK接口及申请好了对应的渠道参数信息。
 
-* 关于手游SDK的相关资源说明:
-* 手游SDK — 第一篇（序言）
-* 手游SDK — 第二篇（SDK架构设计篇）
-* 手游SDK — 第三篇（SDK架构设计代码实现篇（上）- 基础库）
-* 手游SDK — 第四篇（SDK架构设计代码实现篇（下）- 项目需求开发）
+* [手游SDK — 第一篇（序言）](https://www.jianshu.com/p/44e844ad7308)
+* [手游SDK — 第二篇（SDK架构设计篇）](https://www.jianshu.com/p/0d27ee9f7f3a)
+* [手游SDK — 第三篇（SDK架构设计代码实现篇（上）- 基础库）](https://www.jianshu.com/p/152fd3af1193)
+* [手游SDK — 第四篇（SDK架构设计代码实现篇（下）- 项目需求开发）](https://www.jianshu.com/p/4d513b93dc3d)
 
 及开源项目地址：
 [手游SDK框架Demo](https://github.com/Bzaigege/GameSDKFrameDemo)
