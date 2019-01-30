@@ -59,7 +59,7 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 
 ### 渠道资源包 说明：
 格式为：渠道名_渠道ID_渠道版本。 内置为渠道资源目录 
-![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/PackageResourceDir.png)
+![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/channelresource.png)
 
 * assets 为渠道assets资源目录，与游戏assets目录合并
 * config 为配置文件资源目录，可根据需求拓展
