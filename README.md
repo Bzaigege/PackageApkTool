@@ -82,4 +82,10 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 * [手游SDK — 第七篇（游戏打包篇（下）- 自动化打包踩坑记录）](https://www.jianshu.com/p/16f852b3aabb)
 
 
+## 项目适配H5游戏打包
+
+打包项目适配H5游戏打包，可参考资源实现
+* [手游SDK — 第八篇（浅谈适配H5游戏）](https://www.jianshu.com/p/d2e7738b4efc)
+
+
 
