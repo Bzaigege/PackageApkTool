@@ -71,10 +71,11 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 * AndroidManifest.xml 为渠道配置文件，与游戏AndroidManifest.xml合并
 
 
+## 资源参考
 
-
-
-
+* [手游SDK — 第五篇（游戏打包篇（上）- 打包系统设计）](https://www.jianshu.com/p/e86e106304d3)
+* [手游SDK — 第六篇（游戏打包篇（中）- 自动化打包）](https://www.jianshu.com/p/e75dceb6c7f2)
+* [手游SDK — 第七篇（游戏打包篇（下）- 自动化打包踩坑记录）](https://www.jianshu.com/p/16f852b3aabb)
 
 
 
