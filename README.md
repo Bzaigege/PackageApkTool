@@ -25,6 +25,7 @@ PackageApkTool 为手游SDK联运系统打包系统核心模块，用于快速�
 * 游戏闪屏和渠道闪屏逻辑兼容处理
 * 支持动态修改游戏的minSdk、TargetSdk、包名等配置
 * 支持第三方库多包名R文件资源引用
+* 支持渠道参数可视化差异性配置
 * 打包过程的日志信息显示
 
 
@@ -41,8 +42,6 @@ WorkSpace为工作目录，UIMain.exe为可执行文件
 PackageResource：
 
 ![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/PackageResourceDir.png)
-
-build_config.json 为打包编译参数配置，可根据不同的渠道需求定制不同的key_value值
 
 GameSDKFrame.apk 为模拟已接入测试渠道SDK的游戏母包
 
