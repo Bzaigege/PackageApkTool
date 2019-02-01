@@ -45,8 +45,8 @@ class PackageApkThread(threading.Thread):
         try:
 
             build_config_str = {}
-            for config_key, config_value in DEFAULT_CONFIG.items():
-                build_config_str[config_key] = config_value
+            for config_key, config_value in Channel_Config_TextCtrl.items():
+                build_config_str[config_key] = config_value.GetValue()
 
             if not os.path.exists(os.path.join(self.setConfig)):
                 os.makedirs(self.setConfig)

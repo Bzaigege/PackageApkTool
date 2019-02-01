@@ -59,6 +59,9 @@ class JChannelPanel(wx.Panel):
         self.channelConfigText = wx.StaticText(self, -1, config_key)
         self.channelConfigValue = wx.TextCtrl(self, -1, style=wx.ALIGN_LEFT | wx.EXPAND)
         self.channelConfigValue.SetValue(config_value)
+
+        Channel_Config_TextCtrl.update({config_key: self.channelConfigValue})
+
         self.channelConfig.Add(self.channelConfigText, 0, wx.ALL | wx.CENTER, 5)
         self.channelConfig.Add(self.channelConfigValue, 1, wx.ALL | wx.CENTER, 5)
 

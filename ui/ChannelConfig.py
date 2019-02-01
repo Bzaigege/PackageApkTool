@@ -3,6 +3,9 @@
 
 from collections import OrderedDict
 
+# 存储渠道配置输入框对象
+Channel_Config_TextCtrl = OrderedDict([])
+
 DEFAULT_CONFIG = OrderedDict([(u'app_id', ''), (u'app_key', ''), (u'app_secret', '')])
 
 CONFIG_Oppo = OrderedDict([(u'app_key', '')])
@@ -42,7 +45,7 @@ CONFIG_Tianyuyou = OrderedDict([(u'tygrm_ak', ''), (u'tygrm_config_p', '')])
 CONFIG_Leyou = OrderedDict([(u'app_id', ''), (u'gameid', ''), (u'agent', '')])
 
 
-# 获取默认的配置
+# 获取默认的配置项
 def get_channel_configs(channel_name='default', channel_id='1', channel_version='1.0.0'):
 
     default_config = DEFAULT_CONFIG
