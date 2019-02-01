@@ -9,12 +9,13 @@ sys.setdefaultencoding('utf8')
 import threading
 from BuildApkTask import *
 from utils.ConfigUtils import *
+from ui.JChannelPanelUI import *
 
 
 # 打包任务线程
 class PackageApkThread(threading.Thread):
 
-    def __init__(self, window, game_apk_path, channel_file_path, compile_file_path,
+    def __init__(self, window, game_apk_path, channel_file_path,
                  sign_file_path, keystore, store_pass, alias, key_pass):
 
         threading.Thread.__init__(self)
@@ -24,7 +25,6 @@ class PackageApkThread(threading.Thread):
         # 资源路径
         self.game_apk_path = game_apk_path
         self.channel_file_path = channel_file_path
-        self.compile_file_path = compile_file_path
 
         # 签名信息
         self.sign_file_path = sign_file_path
@@ -33,12 +33,32 @@ class PackageApkThread(threading.Thread):
         self.alias = alias
         self.key_pass = key_pass
 
+        # 编译参数写入目录
+        self.setConfig = os.path.join('WorkSpace', 'UIConfig')
+        self.compile_file_path = ''
+
     def stop(self):
         self.timeToQuit.set()
 
     def run(self):
 
         try:
+
+            build_config_str = {}
+            for config_key, config_value in DEFAULT_CONFIG.items():
+                build_config_str[config_key] = config_value
+
+            if not os.path.exists(os.path.join(self.setConfig)):
+                os.makedirs(self.setConfig)
+
+            self.compile_file_path = os.path.join(self.setConfig, 'build_config.json')
+
+            # 如果存在就删除，保证配置文件是最新的配置文件
+            if os.path.exists(self.compile_file_path):
+                os.remove(self.compile_file_path)
+
+            with open(self.compile_file_path, 'wb') as uiConfig:
+                uiConfig.write(json.dumps(build_config_str, ensure_ascii=False))
 
             # 打包任务配置
             taskId = '180'
