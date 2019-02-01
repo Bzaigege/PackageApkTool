@@ -25,6 +25,7 @@ PackageApkTool 为手游SDK联运系统打包系统核心模块，用于快速�
 * 游戏闪屏和渠道闪屏逻辑兼容处理
 * 支持动态修改游戏的minSdk、TargetSdk、包名等配置
 * 支持第三方库多包名R文件资源引用
+* 支持渠道参数可视化差异性配置
 * 打包过程的日志信息显示
 
 
@@ -42,8 +43,6 @@ PackageResource：
 
 ![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/PackageResourceDir.png)
 
-build_config.json 为打包编译参数配置，可根据不同的渠道需求定制不同的key_value值
-
 GameSDKFrame.apk 为模拟已接入测试渠道SDK的游戏母包
 
 lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道版本。 内置为渠道资源目录
@@ -52,8 +51,10 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 
 ![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/%E6%89%93%E5%8C%85.gif)
 
-### build_config.json 配置文件说明：
-编译过程用到的参数都可以在这里配置对饮的Key_Value值，但是涉及到渠道参数的配置的时候，需要修改渠道适配代码读取Key值
+### 配置参数说明：
+
+不同的渠道配置可通过参数配置栏填写，包括动态修改游戏的minSdk、TargetSdk、包名等配置。配置完毕后会写到对应的配置文件里，
+编译过程用到的参数都可以在这里配置对应的Key_Value值，但是涉及到渠道参数的配置的时候，需要修改渠道适配代码读取Key值
 [代码地址](https://github.com/Bzaigege/PackageApkTool/tree/master/channel/special)
 
 目前只适配十多常用渠道，如果有拓展，可自行添加代码修改。也可以贡献代码上传到该库
