@@ -40,9 +40,14 @@ class GuiMainFrame(wx.Frame):
         self.old_panel = self.channelPanel
         self.new_panel = None
 
+        self.first_complete_refresh_ui()
+
+    # 加载整个界面后，刷新布局
+    def first_complete_refresh_ui(self):
+        self.resourcePanel.on_up_data_channel_ui()
+
     # 动态更新渠道的配置布局
     def up_data_ui(self, channel_name, channel_id, channel_version):
-        print ('更新UI')
 
         if self.new_panel is not None:
             self.old_panel.Destroy()

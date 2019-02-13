@@ -125,11 +125,10 @@ class ResourcePanel(wx.Panel):
                         game_key_pass = setting_config['game_key_pass']
                         self.key_pass_text.SetValue(game_key_pass)
 
-                    # 这里有个小bug,界面初始化时，无法刷新对应渠道的配置
-                    # if setting_config.has_key('channel_file_path'):
-                    #     channel_file_path = setting_config['channel_file_path']
-                    #     self.channelFilePath.SetValue(channel_file_path)
-                    #     self.on_up_data_channel_ui()
+                    # 这里有个小bug,界面初始化时，无法刷新直接对应渠道的配置，需加载完后才能刷新
+                    if setting_config.has_key('channel_file_path'):
+                        channel_file_path = setting_config['channel_file_path']
+                        self.channelFilePath.SetValue(channel_file_path)
 
         except Exception as e:
             print str(e)
