@@ -169,11 +169,12 @@ class ResourcePanel(wx.Panel):
     def on_up_data_channel_ui(self):
 
         self.channel_file_path = self.channelFilePath.GetValue()
-        channelFileName = os.path.splitext(os.path.basename(self.channel_file_path))[0]
-        file_dist = channelFileName.split('_')
-        channelName = file_dist[0]
-        channelId = file_dist[1]
-        channelVersion = file_dist[2]
+        if self.channel_file_path:
+            channelFileName = os.path.splitext(os.path.basename(self.channel_file_path))[0]
+            file_dist = channelFileName.split('_')
+            channelName = file_dist[0]
+            channelId = file_dist[1]
+            channelVersion = file_dist[2]
 
-        self.function(channelName, channelId, channelVersion)
+            self.function(channelName, channelId, channelVersion)
 
