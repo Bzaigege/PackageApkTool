@@ -81,6 +81,7 @@ class LogUtils(object):
         self.handler = handler
 
 
+# 将控制台的日志写到文件里面
 class Logger(object):
 
     def __init__(self, file_name='default_package_log'):
