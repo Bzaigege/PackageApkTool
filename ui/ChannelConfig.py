@@ -3,106 +3,185 @@
 
 from collections import OrderedDict
 
-# 存储渠道配置输入框对象
-Channel_Config_TextCtrl = OrderedDict([])
 
-DEFAULT_CONFIG = OrderedDict([(u'app_id', ''), (u'app_key', ''), (u'app_secret', '')])
-
-CONFIG_Oppo = OrderedDict([(u'app_key', '')])
-
-CONFIG_Huawei = OrderedDict([(u'app_id', ''), (u'cp_id', '')])
-
-CONFIG_Ysdk = OrderedDict([(u'app_id', ''), (u'wx_app_id', '')])
-
-CONFIG_Lenovo = OrderedDict([(u'app_id', '')])
-
-CONFIG_Thyx = OrderedDict([(u'app_id', ''), (u'app_key', '')])
-
-CONFIG_Ludashi = OrderedDict([(u'sdk_channel', ''), (u'ludashi_channel', '')])
-
-CONFIG_Dangle = OrderedDict([(u'gameMainActivity', ''), (u'MERCHANT_ID', ''), (u'app_id', ''), (u'app_key', ''), (u'seq_num', '')])
-
-CONFIG_Guaimao = OrderedDict([(u'app_id', '')])
-
-CONFIG_YouxiFan = OrderedDict([(u'app_id', ''), (u'gameid', ''), (u'SDK_AGENT', ''), (u'YG_APPID', '')])
-
-CONFIG_WufanYouxi = OrderedDict([(u'app_key', ''), (u'private_key', '')])
-
-CONFIG_Yijie = OrderedDict([(u'app_id', '')])
-
-CONFIG_TT = OrderedDict([(u'game_ids', ''), (u'secret_key', '')])
-
-CONFIG_JueFeng = OrderedDict([(u'game_ids', ''), (u'app_key', '')])
-
-CONFIG_Qishizhushou = OrderedDict([(u'game_ids', '')])
-
-CONFIG_Pengyouwan = OrderedDict([(u'app_key', '')])
-
-CONFIG_Muzhiwan = OrderedDict([(u'Appkey', '')])
-
-CONFIG_Tianyuyou = OrderedDict([(u'tygrm_ak', ''), (u'tygrm_config_p', '')])
-
-CONFIG_Leyou = OrderedDict([(u'app_id', ''), (u'gameid', ''), (u'agent', '')])
+# 定义一个字典来存储已配置渠道的配置信息
+CHANNEL_CONFIG = {}
 
 
 # 获取默认的配置项
 def get_channel_configs(channel_name='default', channel_id='1', channel_version='1.0.0'):
 
-    default_config = DEFAULT_CONFIG
+    default_config = CHANNEL_CONFIG.get(channel_id)
+
+    if default_config == None:
+        default_config = get_default_config()
+
     if channel_id == '17':
-        default_config = CONFIG_Oppo
+        default_config = get_oppo_config()
 
     elif channel_id == '20':  # 华为渠道SDK
-        default_config = CONFIG_Huawei
+        default_config = get_huawei_config()
 
     elif channel_id == '28':  # 应用宝渠道SDK
-        default_config = CONFIG_Ysdk
+        default_config = get_ysdk_config()
 
     elif channel_id == '36':  # 联想渠道SDK
-        default_config = CONFIG_Lenovo
+        default_config = get_lenovo_config()
 
     elif channel_id == '39':  # 头号游戏渠道SDK
-        default_config = CONFIG_Thyx
+        default_config = get_thyx_config()
 
     elif channel_id == '41':  # 鲁大师渠道SDK
-        default_config = CONFIG_Ludashi
+        default_config = get_ludashi_config()
 
     elif channel_id == '45':  # 当乐渠道SDK
-        default_config = CONFIG_Dangle
+        default_config = get_dangle_config()
 
     elif channel_id == '46':  # 怪猫渠道SDK
-        default_config = CONFIG_Guaimao
+        default_config = get_guaimao_config()
 
     elif channel_id == '47':  # 游戏Fan渠道SDK
-        default_config = CONFIG_YouxiFan
+        default_config = get_youxifan_config()
 
     elif channel_id == '49':  # 悟饭游戏渠道SDK
-        default_config = CONFIG_WufanYouxi
+        default_config = get_wufanyouxi_config()
 
     elif channel_id == '50':  # 易接渠道SDK
-        default_config = CONFIG_Yijie
+        default_config = get_yijie_config()
 
     elif channel_id == '52':  # TT渠道SDK
-        default_config = CONFIG_TT
+        default_config = get_tt_config()
 
     elif channel_id == '55':  # 绝峰渠道SDK
-        default_config = CONFIG_JueFeng
+        default_config = get_juefeng_config()
 
     elif channel_id == '56':  # 骑士助手渠道SDK
-        default_config = CONFIG_Qishizhushou
+        default_config = get_qszs_config()
 
     elif channel_id == '57':  # 朋友玩渠道SDK
-        default_config = CONFIG_Pengyouwan
+        default_config = get_pyw_config()
 
     elif channel_id == '58':  # 拇指玩渠道SDK
-        default_config = CONFIG_Muzhiwan
+        default_config = get_mzw_config()
 
     elif channel_id == '67':  # 天宇游渠道SDK
-        default_config = CONFIG_Tianyuyou
+        default_config = get_tyy_config()
 
     elif channel_id == '68':  # 乐游渠道SDK
-        default_config = CONFIG_Leyou
+        default_config = get_leyou_config()
 
-    # 默认都添加包名
-    default_config.update({u'game_package': ''})
     return default_config
+
+
+# 获取默认的配置
+def get_default_config():
+    configs = OrderedDict([(u'app_id', ''), (u'app_key', ''), (u'app_secret', '')])
+    return configs
+
+
+# 获取oppo默认的配置
+def get_oppo_config():
+    configs = OrderedDict([(u'app_key', '')])
+    return configs
+
+
+# 获取华为默认的配置
+def get_huawei_config():
+    configs = OrderedDict([(u'app_id', ''), (u'cp_id', '')])
+    return configs
+
+
+# 获取YSDK默认的配置
+def get_ysdk_config():
+    configs = OrderedDict([(u'app_id', ''), (u'wx_app_id', '')])
+    return configs
+
+
+# 获取联想默认的配置
+def get_lenovo_config():
+    configs = OrderedDict([(u'app_id', '')])
+    return configs
+
+
+# 获取头号游戏默认的配置
+def get_thyx_config():
+    configs = OrderedDict([(u'app_id', ''), (u'app_key', '')])
+    return configs
+
+
+# 获取鲁大师默认的配置
+def get_ludashi_config():
+    configs = OrderedDict([(u'sdk_channel', ''), (u'ludashi_channel', '')])
+    return configs
+
+
+# 获取当乐默认的配置
+def get_dangle_config():
+    configs = OrderedDict([(u'gameMainActivity', ''), (u'MERCHANT_ID', ''), (u'app_id', ''), (u'app_key', ''), (u'seq_num', '')])
+    return configs
+
+
+# 获取怪猫默认的配置
+def get_guaimao_config():
+    configs = OrderedDict([(u'app_id', '')])
+    return configs
+
+
+# 获取游戏Fan默认的配置
+def get_youxifan_config():
+    configs = OrderedDict([(u'app_id', ''), (u'gameid', ''), (u'SDK_AGENT', ''), (u'YG_APPID', '')])
+    return configs
+
+
+# 获取悟饭游戏默认的配置
+def get_wufanyouxi_config():
+    configs = OrderedDict([(u'app_key', ''), (u'private_key', '')])
+    return configs
+
+
+# 获取易接默认的配置
+def get_yijie_config():
+    configs = OrderedDict([(u'app_id', '')])
+    return configs
+
+
+# 获取TT默认的配置
+def get_tt_config():
+    configs = OrderedDict([(u'game_ids', ''), (u'secret_key', '')])
+    return configs
+
+
+# 获取绝峰默认的配置
+def get_juefeng_config():
+    configs = OrderedDict([(u'game_ids', ''), (u'app_key', '')])
+    return configs
+
+
+# 获取骑士助手默认的配置
+def get_qszs_config():
+    configs = OrderedDict([(u'game_ids', '')])
+    return configs
+
+
+# 获取朋友玩默认的配置
+def get_pyw_config():
+    configs = OrderedDict([(u'app_key', '')])
+    return configs
+
+
+# 获取拇指玩默认的配置
+def get_mzw_config():
+    configs = OrderedDict([(u'Appkey', '')])
+    return configs
+
+
+# 获取天宇游默认的配置
+def get_tyy_config():
+    configs = OrderedDict([(u'tygrm_ak', ''), (u'tygrm_config_p', '')])
+    return configs
+
+
+# 获取乐游默认的配置
+def get_leyou_config():
+    configs = OrderedDict([(u'app_id', ''), (u'gameid', ''), (u'agent', '')])
+    return configs

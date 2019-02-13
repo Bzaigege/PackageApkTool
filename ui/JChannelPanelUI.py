@@ -10,10 +10,10 @@ from ui.JChannelConfigUI import JChannelConfigDialog
 # 渠道参数配置面板
 class JChannelPanel(wx.Panel):
 
-    def __init__(self, parent, frame, func, channel_name='default', channel_id='6', channel_version='1.0.0'):
+    def __init__(self, parent, frame, func, channel_name='default', channel_id='1', channel_version='1.0.0'):
         wx.Panel.__init__(self, parent=parent, style=wx.SUNKEN_BORDER)
 
-        print 'channel_name=%s  channel_id=%s channel_version=%s' % (channel_name, channel_id, channel_version)
+        print 'channel_name=%s  channel_id=%s  channel_version=%s' % (channel_name, channel_id, channel_version)
 
         self.window = frame
         self.function = func
@@ -23,6 +23,12 @@ class JChannelPanel(wx.Panel):
         self.channel_version = channel_version
 
         self.channel_configs = get_channel_configs(channel_name, channel_id, channel_version)
+        # 默认都添加包名
+        if not self.channel_configs.get(u'game_package'):
+            self.channel_configs.update({u'game_package': ''})
+
+        # 存储渠道配置输入框对象
+        self.channel_config_text = OrderedDict([])
 
         self.channelLayout = None
         self.channelLabel = None
@@ -48,8 +54,12 @@ class JChannelPanel(wx.Panel):
         self.channelConfigAddButton = wx.Button(self, label=u'添加配置项', style=wx.BORDER_MASK)
         self.channelConfigAddButton.Bind(wx.EVT_BUTTON, self.on_add_config)
 
+        self.channelConfigSaveButton = wx.Button(self, label=u'保存配置', style=wx.BORDER_MASK)
+        self.channelConfigSaveButton.Bind(wx.EVT_BUTTON, self.save_channel_config)
+
         self.channelLayout.Add(self.channelBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=10)
         self.channelLayout.Add(self.channelConfigAddButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=10)
+        self.channelLayout.Add(self.channelConfigSaveButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=10)
         self.SetSizer(self.channelLayout)
 
     # 添加配置项
@@ -60,7 +70,8 @@ class JChannelPanel(wx.Panel):
         self.channelConfigValue = wx.TextCtrl(self, -1, style=wx.ALIGN_LEFT | wx.EXPAND)
         self.channelConfigValue.SetValue(config_value)
 
-        Channel_Config_TextCtrl.update({config_key: self.channelConfigValue})
+        # 存储key值和TextCtrl对象
+        self.channel_config_text.update({config_key: self.channelConfigValue})
 
         self.channelConfig.Add(self.channelConfigText, 0, wx.ALL | wx.CENTER, 5)
         self.channelConfig.Add(self.channelConfigValue, 1, wx.ALL | wx.CENTER, 5)
@@ -75,4 +86,19 @@ class JChannelPanel(wx.Panel):
     # 接收收到的配置项
     def get_add_config(self, config_key, config_value):
         self.channel_configs.update({config_key: config_value})  # 添加到字典里
+
+        # 保存添加项之前的值
+        for config_key, config_value in self.channel_config_text.items():
+            self.channel_configs.update({config_key: config_value.GetValue()})
+
         self.function(self.channel_name, self.channel_id, self.channel_version)
+
+    # 保存配置信息
+    def save_channel_config(self, event):
+        channel_configs_dict = OrderedDict({})
+        for config_key, config_value in self.channel_config_text.items():
+            channel_configs_dict.update({config_key: config_value.GetValue()})
+        CHANNEL_CONFIG[self.channel_id] = channel_configs_dict
+
+
+

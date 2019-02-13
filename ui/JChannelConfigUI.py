@@ -19,12 +19,12 @@ class JChannelConfigDialog(wx.Dialog):
 
         panel = wx.Panel(self)
 
-        config_key_name = wx.StaticText(panel, -1, '配置项', pos=(10, 15))
-        self.config_key_text = wx.TextCtrl(panel, -1, u'', pos=(55, 15), size=(230, -1))
+        config_key_name = wx.StaticText(panel, -1, '配置项', pos=(10, 25))
+        self.config_key_text = wx.TextCtrl(panel, -1, u'', pos=(55, 25), size=(230, -1))
         self.config_key_text.SetForegroundColour('gray')
 
-        config_value_name = wx.StaticText(panel, -1, '配置值', pos=(10, 55))
-        self.config_value_text = wx.TextCtrl(panel, -1, u'', pos=(55, 55), size=(230, -1))
+        config_value_name = wx.StaticText(panel, -1, '配置值', pos=(10, 65))
+        self.config_value_text = wx.TextCtrl(panel, -1, u'', pos=(55, 65), size=(230, -1))
         self.config_value_text.SetForegroundColour('gray')
 
         sure_button = wx.Button(panel, -1, u'确定', pos=(10, 105))

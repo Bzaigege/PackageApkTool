@@ -21,7 +21,7 @@ class ResourcePanel(wx.Panel):
         self.gameApkLabel = wx.StaticBox(self, -1, u'游戏信息')
         self.gameApkBox = wx.StaticBoxSizer(self.gameApkLabel, wx.HORIZONTAL)
 
-        self.apkFileText = wx.StaticText(self, -1, u"游戏APK")
+        self.apkFileText = wx.StaticText(self, -1, u"游戏母包")
         self.apkFilePath = wx.TextCtrl(self, style=wx.EXPAND)
         self.apkFileButton = wx.Button(self, label=u'选择文件')
         self.apkFileButton.Bind(wx.EVT_BUTTON, self.on_choose_apk_file)
@@ -125,7 +125,7 @@ class ResourcePanel(wx.Panel):
                         game_key_pass = setting_config['game_key_pass']
                         self.key_pass_text.SetValue(game_key_pass)
 
-                    # 这里有个小bug,界面初始化时，无法刷新直接对应渠道的配置，需加载完后才能刷新
+                    # 这里有个小bug,界面初始化时，无法刷新对应渠道的配置
                     if setting_config.has_key('channel_file_path'):
                         channel_file_path = setting_config['channel_file_path']
                         self.channelFilePath.SetValue(channel_file_path)
@@ -146,6 +146,7 @@ class ResourcePanel(wx.Panel):
         wildcard_text = '*.keystore'
         filename = self.on_choose_file(self, wildcard_text, u"选择游戏签名文件")
         self.signFilePath.SetValue(filename)
+        self.Keystore_text.SetValue(self.get_file_path_name(filename))
 
     # 选择渠道资源
     def on_choose_channel_file(self, event):
@@ -153,7 +154,8 @@ class ResourcePanel(wx.Panel):
         wildcard_text = "ZIP files (*.zip)|*.zip|RAR files (*.rar)|*.rar"
         filename = self.on_choose_file(self, wildcard_text, u"选择渠道资源文件")
         self.channelFilePath.SetValue(filename)
-        self.on_up_data_channel_ui()
+        if filename:
+            self.on_up_data_channel_ui()
 
     # 创建标准文件对话框
     def on_choose_file(self, pand, wildcard_text, title_name):
@@ -164,6 +166,10 @@ class ResourcePanel(wx.Panel):
             filename = dialog.GetPath()
         dialog.Destroy()
         return filename
+
+    # 返回文件的路径截取后的文件名
+    def get_file_path_name(self, file_path):
+        return os.path.basename(file_path)
 
     # 选择渠道资源后，更新渠道配置UI,对应默认的值
     def on_up_data_channel_ui(self):

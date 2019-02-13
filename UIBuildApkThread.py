@@ -44,8 +44,9 @@ class PackageApkThread(threading.Thread):
 
         try:
 
+            channel_configs = self.window.child_spWindow.GetWindow2().channel_config_text
             build_config_str = {}
-            for config_key, config_value in Channel_Config_TextCtrl.items():
+            for config_key, config_value in channel_configs.items():
                 build_config_str[config_key] = config_value.GetValue()
 
             if not os.path.exists(os.path.join(self.setConfig)):
@@ -123,14 +124,14 @@ class PackageApkThread(threading.Thread):
                 self.window.show_message(u'打包失败：%s' % result)
 
             # 按钮点击恢复
-            self.window.packageButton.Enable()
+            self.window.down_panel.packageButton.Enable()
 
-        except Exception, e:
-            self.window.show_message(u'打包失败：%s' % e)
-            self.window.packageButton.Enable()
+        except Exception as e:
+            self.window.down_panel.show_message(u'打包失败：%s' % e)
+            self.window.down_panel.packageButton.Enable()
 
     def write_text_log(self, text_str):
-        self.window.write_log(text_str)
+        self.window.down_panel.write_log(text_str)
 
 
 # 清除本地工作目录
@@ -147,6 +148,8 @@ def free_local_resource(gameRes_path, sdkRes_path, configRes_Path, signRes_Path)
 
     if os.path.isdir(signRes_Path):
         shutil.rmtree(signRes_Path)
+
+
 
 
 

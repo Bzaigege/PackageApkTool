@@ -135,7 +135,7 @@ class PackageApkPanel(wx.Panel):
 
         # 启动打包任务
         event.GetEventObject().Disable()
-        thread = PackageApkThread(self, game_apk_file_path, channel_file_path,
+        thread = PackageApkThread(self.window, game_apk_file_path, channel_file_path,
                                   game_sign_file_path, keystore, store_pass, alias, key_pass)
         thread.start()
 
