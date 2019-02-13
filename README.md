@@ -26,7 +26,7 @@ PackageApkTool 为手游SDK联运系统打包系统核心模块，用于快速�
 * 支持动态修改游戏的minSdk、TargetSdk、包名等配置
 * 支持第三方库多包名R文件资源引用
 * 支持渠道参数可视化差异性配置
-* 打包过程的日志信息显示
+* 打包过程的日志信息显示及日志输出
 
 
 ## 项目功能使用示例
@@ -54,8 +54,7 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 ### 配置参数说明：
 
 不同的渠道配置可通过参数配置栏填写，包括动态修改游戏的minSdk、TargetSdk、包名等配置。配置完毕后会写到对应的配置文件里，
-编译过程用到的参数都可以在这里配置对应的Key_Value值，但是涉及到渠道参数的配置的时候，需要修改渠道适配代码读取Key值
-[代码地址](https://github.com/Bzaigege/PackageApkTool/tree/master/channel/special)
+编译过程用到的参数都可以在这里配置对应的Key_Value值，目前只针对部分渠道做适配修改，如有额外渠道适配或当前适配参数Key不满足需求时，需要修改渠道适配代码[代码地址](https://github.com/Bzaigege/PackageApkTool/tree/master/channel/special)还有UI配置项
 
 目前只适配十多常用渠道，如果有拓展，可自行添加代码修改。也可以贡献代码上传到该库
 
