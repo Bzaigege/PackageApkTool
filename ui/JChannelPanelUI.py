@@ -24,11 +24,13 @@ class JChannelPanel(wx.Panel):
 
         self.channel_configs = get_channel_configs(channel_name, channel_id, channel_version)
         # 默认都添加包名
-        if not self.channel_configs.get(u'game_package'):
-            self.channel_configs.update({u'game_package': ''})
+        if not self.channel_configs.get(u'package'):
+            self.channel_configs.update({u'package': ''})
 
         # 存储渠道配置输入框对象
         self.channel_config_text = OrderedDict([])
+
+        self.channel_configs_dict = OrderedDict({})
 
         self.channelLayout = None
         self.channelLabel = None
@@ -41,6 +43,8 @@ class JChannelPanel(wx.Panel):
         self.build_ui()
 
     def build_ui(self):
+
+        print self.channel_configs
 
         # 渠道参数配置布局
         self.channelLayout = wx.BoxSizer(wx.VERTICAL)
@@ -57,9 +61,9 @@ class JChannelPanel(wx.Panel):
         self.channelConfigSaveButton = wx.Button(self, label=u'保存配置', style=wx.BORDER_MASK)
         self.channelConfigSaveButton.Bind(wx.EVT_BUTTON, self.save_channel_config)
 
-        self.channelLayout.Add(self.channelBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=10)
-        self.channelLayout.Add(self.channelConfigAddButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=10)
-        self.channelLayout.Add(self.channelConfigSaveButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=10)
+        self.channelLayout.Add(self.channelBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=6)
+        self.channelLayout.Add(self.channelConfigAddButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=6)
+        self.channelLayout.Add(self.channelConfigSaveButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=6)
         self.SetSizer(self.channelLayout)
 
     # 添加配置项
@@ -84,21 +88,25 @@ class JChannelPanel(wx.Panel):
         dlg.Show()
 
     # 接收收到的配置项
-    def get_add_config(self, config_key, config_value):
-        self.channel_configs.update({config_key: config_value})  # 添加到字典里
+    def get_add_config(self, new_config_key, new_config_value):
 
-        # 保存添加项之前的值
+        # 先保存配置信息
         for config_key, config_value in self.channel_config_text.items():
-            self.channel_configs.update({config_key: config_value.GetValue()})
+            self.channel_configs_dict.update({config_key: config_value.GetValue()})
+        self.channel_configs_dict.update({new_config_key: new_config_value})
+        CHANNEL_CONFIG[self.channel_id] = self.channel_configs_dict
 
+        # 刷新界面
         self.function(self.channel_name, self.channel_id, self.channel_version)
 
     # 保存配置信息
     def save_channel_config(self, event):
-        channel_configs_dict = OrderedDict({})
+
         for config_key, config_value in self.channel_config_text.items():
-            channel_configs_dict.update({config_key: config_value.GetValue()})
-        CHANNEL_CONFIG[self.channel_id] = channel_configs_dict
+            self.channel_configs_dict.update({config_key: config_value.GetValue()})
+
+        CHANNEL_CONFIG[self.channel_id] = self.channel_configs_dict
+
 
 
 
