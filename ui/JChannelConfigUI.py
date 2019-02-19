@@ -9,6 +9,7 @@ class JChannelConfigDialog(wx.Dialog):
 
     def __init__(self, parent, func):
         super(JChannelConfigDialog, self).__init__(parent, title='添加配置项', size=(300, 180))
+        self.Center()  # 窗口居中
 
         self.func = func
         self.config_key_text = None

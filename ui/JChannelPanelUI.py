@@ -83,8 +83,11 @@ class JChannelPanel(wx.ScrolledWindow):
 
     # 动态添加配置项
     def on_add_config(self, event):
-        dlg = JChannelConfigDialog(self, self.get_add_config)
-        dlg.Show()
+        dlg = JChannelConfigDialog(self.window, self.get_add_config)
+        if dlg.IsEnabled():
+            self.window.Enable(enable=False)
+            if not dlg.ShowModal() == wx.ID_OK:
+                self.window.Enable(enable=True)
 
     # 接收收到的配置项
     def get_add_config(self, new_config_key, new_config_value):
