@@ -5,6 +5,7 @@ import wx
 from ui.ResourceUI import ResourcePanel
 from ui.JChannelPanelUI import JChannelPanel
 from ui.PackageApkUI import PackageApkPanel
+from ui.JChannelSDKDownUI import JChannelSDKDownDialog
 
 
 TOOL_TITLE = u'游戏打渠道包工具'
@@ -14,7 +15,8 @@ TOOL_TITLE = u'游戏打渠道包工具'
 class GuiMainFrame(wx.Frame):
 
     def __init__(self, flag=True):
-        wx.Frame.__init__(self, parent=None, id=-1, title=TOOL_TITLE, size=(1000, 800))
+        wx.Frame.__init__(self, parent=None, id=-1, title=TOOL_TITLE, size=(1000, 850))
+        self.Center()  # 窗口居中
 
         # 将窗体传递到子控件
         self.windowFrame = self
@@ -36,6 +38,22 @@ class GuiMainFrame(wx.Frame):
         self.spWindow.SplitHorizontally(self.up_panel, self.down_panel, 0)
         self.child_spWindow.SplitVertically(self.resourcePanel, self.channelPanel, 0)
         self.Bind(wx.EVT_ERASE_BACKGROUND, self.on_erase_back)
+
+        # 工具栏
+        self.ToolBar = wx.ToolBar(self, wx.ID_ANY)  # 创建工具栏对象
+        toolbar_size = (30, 25)  # 设置工具栏图标大小
+
+        # 创建图标
+        open_file_bmp = wx.ArtProvider.GetBitmap(wx.ART_FILE_OPEN, wx.ART_TOOLBAR, toolbar_size)
+        down_sdk_bmp = wx.ArtProvider.GetBitmap(wx.ART_GO_DOWN, wx.ART_TOOLBAR, toolbar_size)
+
+        # 将这图标放入工具栏
+        self.ToolBar.AddTool(200, '', open_file_bmp, 'Open File')
+        self.ToolBar.AddTool(201, '', down_sdk_bmp, 'Down Sdk')
+
+        self.ToolBar.AddSeparator()  # 分割
+        self.Bind(wx.EVT_MENU, self.on_click_tool, id=200, id2=201)
+        self.ToolBar.Realize()  # 提交工具栏设置
 
         self.old_panel = self.channelPanel
         self.new_panel = None
@@ -66,6 +84,20 @@ class GuiMainFrame(wx.Frame):
             self.child_spWindow.SetSashPosition(0)
             self.first = self.first + 1
         self.Refresh()
+
+    # 为工具栏的图标添加事件处理
+    def on_click_tool(self, event):
+        event_id = event.GetId()
+        if event_id == 200:
+            pass
+
+        elif event_id == 201:
+
+            down_dlg = JChannelSDKDownDialog(self)
+            if down_dlg.IsEnabled():
+                self.Enable(enable=False)
+                if not down_dlg.ShowModal() == wx.ID_OK:
+                    self.Enable(enable=True)
 
 
 # 程序运行入口

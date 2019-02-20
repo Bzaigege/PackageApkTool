@@ -1,0 +1,171 @@
+[
+    {
+        "id": 0,
+        "name": "测试渠道",
+        "alias": "test",
+        "down_info": {
+            "1.0.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip",
+            "1.0.3": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+	{
+        "id": 1,
+        "name": "乐享",
+        "alias": "leixang",
+        "down_info": {
+            "1.0.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 3,
+        "name": "应用宝",
+        "alias": "ysdk",
+        "down_info": {
+            "2.0.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 4,
+        "name": "拇指玩",
+        "alias": "mzw",
+        "down_info": {
+            "1.5.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 5,
+        "name": "九游",
+        "alias": "jiuyou",
+        "down_info": {
+            "1.4.5": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 6,
+        "name": "魅族",
+        "alias": "meizu",
+        "down_info": {
+
+        }
+    },
+	{
+        "id": 7,
+        "name": "华为",
+        "alias": "huawei",
+        "down_info": {
+
+        }
+    },
+    {
+        "id": 8,
+        "name": "百度",
+        "alias": "baidu",
+        "down_info": {
+            "5.2.0.0": ""
+        }
+    },
+    {
+        "id": 9,
+        "name": "金立",
+        "alias": "jinli",
+        "down_info": {
+            "1.4.7": ""
+        }
+    },
+    {
+        "id": 10,
+        "name": "快手",
+        "alias": "快手",
+        "down_info": {
+            "1.3.4.5": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 11,
+        "name": "安智",
+        "alias": "anzhi",
+        "down_info": {
+
+        }
+    },
+	{
+        "id": 12,
+        "name": "HTC",
+        "alias": "htc",
+        "down_info": {
+
+        }
+    },
+    {
+        "id": 13,
+        "name": "当乐",
+        "alias": "dangle",
+        "down_info": {
+
+        }
+    },
+    {
+        "id": 14,
+        "name": "酷派",
+        "alias": "coolpad",
+        "down_info": {
+
+        }
+    },
+    {
+        "id": 15,
+        "name": "怪猫",
+        "alias": "guaimao",
+        "down_info": {
+            "1.4.5": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 16,
+        "name": "木蚂蚁",
+        "alias": "mmy",
+        "down_info": {
+            "1.0.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+	{
+        "id": 17,
+        "name": "朋友玩",
+        "alias": "pengyouwan",
+        "down_info": {
+            "1.0.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 18,
+        "name": "易接",
+        "alias": "yijie",
+        "down_info": {
+            "2.0.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 19,
+        "name": "PPTV",
+        "alias": "pptv",
+        "down_info": {
+            "1.5.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 20,
+        "name": "天宇游",
+        "alias": "tyy",
+        "down_info": {
+            "1.5.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    },
+    {
+        "id": 21,
+        "name": "乐游",
+        "alias": "leyou",
+        "down_info": {
+            "1.5.0": "https://github.com/Bzaigege/PackageApkTool/raw/master/git/lexiang_1_1.0.0.zip"
+        }
+    }
+]

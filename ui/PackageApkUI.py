@@ -5,6 +5,7 @@ import wx
 import os
 import json
 from UIBuildApkThread import PackageApkThread
+from utils.ConfigUtils import *
 
 TOTAL_MESSAGE = u"温馨提示：请确认游戏包已接入聚合SDK母包,否则无法打包"
 
@@ -42,7 +43,7 @@ class PackageApkPanel(wx.Panel):
         self.packageLayout.Add(self.logBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=3)
         self.SetSizer(self.packageLayout)
 
-        self.setConfig = os.path.join('WorkSpace', 'UIConfig')
+        self.setConfig = os.path.join(DIR_WorkSpace, DIR_UIConfig)
 
     # 开始打包
     def on_package_apk(self, event):

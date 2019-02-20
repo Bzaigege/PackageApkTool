@@ -34,7 +34,7 @@ class PackageApkThread(threading.Thread):
         self.key_pass = key_pass
 
         # 编译参数写入目录
-        self.setConfig = os.path.join('WorkSpace', 'UIConfig')
+        self.setConfig = os.path.join(DIR_WorkSpace, DIR_UIConfig)
         self.compile_file_path = ''
 
     def stop(self):

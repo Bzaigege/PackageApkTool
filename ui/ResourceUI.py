@@ -4,6 +4,7 @@
 import wx
 import os
 import json
+from utils.ConfigUtils import *
 
 
 # 选择打包资源布局面板
@@ -95,7 +96,7 @@ class ResourcePanel(wx.Panel):
         self.SetSizer(self.resourceLayout)
 
         # 读取上一次的配置信息
-        self.setConfig = os.path.join('WorkSpace', 'UIConfig')
+        self.setConfig = os.path.join(DIR_WorkSpace, DIR_UIConfig)
         try:
             if os.path.exists(os.path.join(self.setConfig, "uiConfig.json")):
                 with open(os.path.join(self.setConfig, "uiConfig.json"), 'r') as uiConfig:

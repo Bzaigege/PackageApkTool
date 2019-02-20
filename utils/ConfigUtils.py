@@ -17,6 +17,8 @@ DIR_Sign = 'Sign'
 DIR_Config = 'Config'
 DIR_Work = 'Work'
 DIR_OutputApk = 'OutputApk'
+DIR_DownSdk = 'DownSdk'
+DIR_UIConfig = 'UIConfig'
 
 DIR_signId = '0'
 DIR_local_signId = '1'
