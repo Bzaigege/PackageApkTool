@@ -114,12 +114,12 @@ class PackageApkPanel(wx.Panel):
             if not os.path.exists(os.path.join(self.setConfig)):
                 os.makedirs(self.setConfig)
 
-            if not os.path.exists(os.path.join(self.setConfig, "uiConfig.json")):
-                with open(os.path.join(self.setConfig, "uiConfig.json"), 'wb') as uiConfig:
+            if not os.path.exists(os.path.join(self.setConfig, UI_CONFIG_PARAMS)):
+                with open(os.path.join(self.setConfig, UI_CONFIG_PARAMS), 'wb') as uiConfig:
                     uiConfig.write(json.dumps(config_str, ensure_ascii=False))
 
             else:
-                with open(os.path.join(self.setConfig, "uiConfig.json"), 'w') as uiConfig:
+                with open(os.path.join(self.setConfig, UI_CONFIG_PARAMS), 'w') as uiConfig:
                     uiConfig.write(json.dumps(config_str, ensure_ascii=False))
 
         except Exception as e:

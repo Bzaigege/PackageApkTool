@@ -52,7 +52,7 @@ class PackageApkThread(threading.Thread):
             if not os.path.exists(os.path.join(self.setConfig)):
                 os.makedirs(self.setConfig)
 
-            self.compile_file_path = os.path.join(self.setConfig, 'build_config.json')
+            self.compile_file_path = os.path.join(self.setConfig, BUILD_COMPILE_PARAMS)
 
             # 如果存在就删除，保证配置文件是最新的配置文件
             if os.path.exists(self.compile_file_path):

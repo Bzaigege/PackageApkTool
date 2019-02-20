@@ -23,6 +23,11 @@ DIR_UIConfig = 'UIConfig'
 DIR_signId = '0'
 DIR_local_signId = '1'
 
+# 配置文件名称
+NAME_APK_OUTPUT = 'dirConfig.json'
+BUILD_COMPILE_PARAMS = 'build_config.json'
+UI_CONFIG_PARAMS = 'uiConfig.json'
+
 
 # 编译配置文件build_config通用化配置key值
 CONF_package = 'game_package'

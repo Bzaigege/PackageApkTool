@@ -98,8 +98,8 @@ class ResourcePanel(wx.Panel):
         # 读取上一次的配置信息
         self.setConfig = os.path.join(DIR_WorkSpace, DIR_UIConfig)
         try:
-            if os.path.exists(os.path.join(self.setConfig, "uiConfig.json")):
-                with open(os.path.join(self.setConfig, "uiConfig.json"), 'r') as uiConfig:
+            if os.path.exists(os.path.join(self.setConfig, UI_CONFIG_PARAMS)):
+                with open(os.path.join(self.setConfig, UI_CONFIG_PARAMS), 'r') as uiConfig:
                     setting_config = json.load(uiConfig)
 
                     if setting_config.has_key('game_apk_path'):

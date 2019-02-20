@@ -111,12 +111,12 @@ class GuiMainFrame(wx.Frame):
                 if not os.path.exists(os.path.join(dir_config)):
                     os.makedirs(dir_config)
 
-                if not os.path.exists(os.path.join(dir_config, "dirConfig.json")):
-                    with open(os.path.join(dir_config, "dirConfig.json"), 'wb') as uiConfig:
+                if not os.path.exists(os.path.join(dir_config, NAME_APK_OUTPUT)):
+                    with open(os.path.join(dir_config, NAME_APK_OUTPUT), 'wb') as uiConfig:
                         uiConfig.write(json.dumps(dir_config_str, ensure_ascii=False))
 
                 else:
-                    with open(os.path.join(dir_config, "dirConfig.json"), 'w') as uiConfig:
+                    with open(os.path.join(dir_config, NAME_APK_OUTPUT), 'w') as uiConfig:
                         uiConfig.write(json.dumps(dir_config_str, ensure_ascii=False))
 
             except Exception as e:

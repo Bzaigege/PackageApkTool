@@ -251,7 +251,6 @@ class MyChannelList(ULC.UltimateListCtrl):
                 self.show_warning("url为空,无法下载! 请检查服务器资源。")
 
             else:
-                new_url = down_url.replace('localhost', 'http://192.168.1.225:8090')
 
                 # 当前按钮设置为不可点击状态
                 down_button.Disable()
@@ -259,7 +258,7 @@ class MyChannelList(ULC.UltimateListCtrl):
                 self.button_checked_dict.append(down_button)
 
                 thread = DownSdkThread(row_id, self.dialog, down_button, down_progress,
-                                       down_id, down_name, down_alias, down_version, new_url, self.down_suc_updata_list)
+                                       down_id, down_name, down_alias, down_version, down_url, self.down_suc_updata_list)
                 thread.start()
 
         event.Skip()

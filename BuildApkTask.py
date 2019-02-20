@@ -50,9 +50,9 @@ class BuildApkTask(object):
         # 打包完成包体输出目录
         self.OutputApkPath = ''
         dir_config = os.path.join(DIR_WorkSpace, DIR_UIConfig)
-        if os.path.exists(os.path.join(dir_config, "dirConfig.json")):
+        if os.path.exists(os.path.join(dir_config, NAME_APK_OUTPUT)):
             try:
-                with open(os.path.join(dir_config, "dirConfig.json"), 'r') as cfg:
+                with open(os.path.join(dir_config, NAME_APK_OUTPUT), 'r') as cfg:
                     setting_config = json.load(cfg)
                     self.OutputApkPath = setting_config['game_channel_apk_output_path']
 
@@ -99,12 +99,12 @@ class BuildApkTask(object):
 
         # 读取打包编译参数
         self.logger.info(u'获取打包编译参数....')
-        if not os.path.exists(os.path.join(self.BaseConfigPath, "build_config.json")):
-            self.logger.info(u"打包编译参数文件： build_config.json不存在 请检查")
-            return 1, u'打包编译参数文件： build_config.json不存在 请检查'
+        if not os.path.exists(os.path.join(self.BaseConfigPath, BUILD_COMPILE_PARAMS)):
+            self.logger.info(u"打包编译参数文件： %s不存在 请检查" % BUILD_COMPILE_PARAMS)
+            return 1, u'打包编译参数文件： %s不存在 请检查' % BUILD_COMPILE_PARAMS
 
         try:
-            with open(os.path.join(self.BaseConfigPath, "build_config.json"), 'r') as build_config:
+            with open(os.path.join(self.BaseConfigPath, BUILD_COMPILE_PARAMS), 'r') as build_config:
                 compile_config = json.load(build_config)
                 self.compile_config = compile_config
                 self.logger.info(u"获取打包编译参数成功")
@@ -119,7 +119,7 @@ class BuildApkTask(object):
 
         except Exception as e:
             self.logger.info(e)
-            return 1, u'读取配置文件build_config.json出错'
+            return 1, u'读取配置文件%s出错' % BUILD_COMPILE_PARAMS
 
         self.logger.info(u'处理签名资源....')
         if self.sign_id != DIR_signId:
