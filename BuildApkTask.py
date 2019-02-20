@@ -48,7 +48,18 @@ class BuildApkTask(object):
         self.TempPath = os.path.join(self.Work, 'Temp', taskId)  # 打包过程缓存路径(处理多任务资源冲突问题)
 
         # 打包完成包体输出目录
-        self.OutputApkPath = os.path.join(self.Build, DIR_OutputApk, taskId)  # 输出包体路径
+        self.OutputApkPath = ''
+        dir_config = os.path.join(DIR_WorkSpace, DIR_UIConfig)
+        if os.path.exists(os.path.join(dir_config, "dirConfig.json")):
+            try:
+                with open(os.path.join(dir_config, "dirConfig.json"), 'r') as cfg:
+                    setting_config = json.load(cfg)
+                    self.OutputApkPath = setting_config['game_channel_apk_output_path']
+
+            except Exception as e:
+                self.OutputApkPath = os.path.join(self.Build, DIR_OutputApk, taskId)
+        else:
+            self.OutputApkPath = os.path.join(self.Build, DIR_OutputApk, taskId)
 
         # 打包过程日志输出目录
         self.logger = LogUtils.sharedInstance(taskId)

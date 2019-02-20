@@ -2,6 +2,9 @@
 # -*-coding:utf-8 -*-
 
 import wx
+import os
+import json
+from utils.ConfigUtils import *
 from ui.ResourceUI import ResourcePanel
 from ui.JChannelPanelUI import JChannelPanel
 from ui.PackageApkUI import PackageApkPanel
@@ -48,8 +51,8 @@ class GuiMainFrame(wx.Frame):
         down_sdk_bmp = wx.ArtProvider.GetBitmap(wx.ART_GO_DOWN, wx.ART_TOOLBAR, toolbar_size)
 
         # 将这图标放入工具栏
-        self.ToolBar.AddTool(200, '', open_file_bmp, 'Open File')
-        self.ToolBar.AddTool(201, '', down_sdk_bmp, 'Down Sdk')
+        self.ToolBar.AddTool(200, u'设置游戏包体输出目录', open_file_bmp, u'设置游戏包体输出目录')
+        self.ToolBar.AddTool(201, u'下载渠道SDK', down_sdk_bmp, u'下载渠道SDK')
 
         self.ToolBar.AddSeparator()  # 分割
         self.Bind(wx.EVT_MENU, self.on_click_tool, id=200, id2=201)
@@ -89,7 +92,35 @@ class GuiMainFrame(wx.Frame):
     def on_click_tool(self, event):
         event_id = event.GetId()
         if event_id == 200:
-            pass
+
+            # 设置包体输出目录
+            apk_out_dir = ''
+            dlg = wx.DirDialog(self, u"选择文件夹", style=wx.DD_DEFAULT_STYLE)
+            if dlg.ShowModal() == wx.ID_OK:
+                print dlg.GetPath()  # 文件夹路径
+                apk_out_dir = dlg.GetPath()
+
+            dlg.Destroy()
+
+            # 保存路径
+            dir_config = os.path.join(DIR_WorkSpace, DIR_UIConfig)
+            dir_config_str = {}
+            if apk_out_dir:
+                dir_config_str['game_channel_apk_output_path'] = apk_out_dir
+            try:
+                if not os.path.exists(os.path.join(dir_config)):
+                    os.makedirs(dir_config)
+
+                if not os.path.exists(os.path.join(dir_config, "dirConfig.json")):
+                    with open(os.path.join(dir_config, "dirConfig.json"), 'wb') as uiConfig:
+                        uiConfig.write(json.dumps(dir_config_str, ensure_ascii=False))
+
+                else:
+                    with open(os.path.join(dir_config, "dirConfig.json"), 'w') as uiConfig:
+                        uiConfig.write(json.dumps(dir_config_str, ensure_ascii=False))
+
+            except Exception as e:
+                print e
 
         elif event_id == 201:
 
