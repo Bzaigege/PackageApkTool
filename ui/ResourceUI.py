@@ -138,14 +138,14 @@ class ResourcePanel(wx.Panel):
     def on_choose_apk_file(self, event):
 
         wildcard_text = '*.apk'
-        filename = self.on_choose_file(self, wildcard_text, u"选择游戏APK文件")
+        filename = self.on_choose_file(self, wildcard_text, u"选择游戏APK文件", os.getcwd().decode('GB2312').encode('utf-8'))
         self.apkFilePath.SetValue(filename)
 
     # 选择签名文件
     def on_choose_sign_file(self, event):
 
         wildcard_text = '*.keystore'
-        filename = self.on_choose_file(self, wildcard_text, u"选择游戏签名文件")
+        filename = self.on_choose_file(self, wildcard_text, u"选择游戏签名文件", os.getcwd().decode('GB2312').encode('utf-8'))
         self.signFilePath.SetValue(filename)
         self.Keystore_text.SetValue(self.get_file_path_name(filename))
 
@@ -153,16 +153,19 @@ class ResourcePanel(wx.Panel):
     def on_choose_channel_file(self, event):
 
         wildcard_text = "ZIP files (*.zip)|*.zip|RAR files (*.rar)|*.rar"
-        filename = self.on_choose_file(self, wildcard_text, u"选择渠道资源文件")
+        default_path = os.path.join(DIR_WorkSpace, DIR_DownSdk)
+        if not os.path.exists(default_path):
+            os.makedirs(default_path)
+        filename = self.on_choose_file(self, wildcard_text, u"选择渠道资源文件", default_path.decode('GB2312').encode('utf-8'))
         self.channelFilePath.SetValue(filename)
         if filename:
             self.on_up_data_channel_ui()
 
     # 创建标准文件对话框
-    def on_choose_file(self, pand, wildcard_text, title_name):
+    def on_choose_file(self, pand, wildcard_text, title_name, default_dir):
 
         filename = ''
-        dialog = wx.FileDialog(pand, title_name, os.getcwd().decode('GB2312').encode('utf-8'), wildcard=wildcard_text)
+        dialog = wx.FileDialog(pand, title_name, default_dir, wildcard=wildcard_text)
         if dialog.ShowModal() == wx.ID_OK:
             filename = dialog.GetPath()
         dialog.Destroy()
