@@ -75,8 +75,8 @@ class JChannelSDKListPanel(wx.Panel):
             return '/'
 
     # 选择渠道资源后，更新渠道配置UI
-    def on_up_data_channel_ui(self, sdk_id, sdk_name, sdk_version):
-        self.function(sdk_id, sdk_name, sdk_version)
+    def on_up_data_channel_ui(self, sdk_id, sdk_name, sdk_version, sdk_path):
+        self.function(sdk_id, sdk_name, sdk_version, sdk_path)
 
 
 # 自定义排序列表(可以添加控件的列表)
