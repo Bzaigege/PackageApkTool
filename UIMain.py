@@ -18,7 +18,7 @@ TOOL_TITLE = u'游戏打渠道包工具'
 class GuiMainFrame(wx.Frame):
 
     def __init__(self, flag=True):
-        wx.Frame.__init__(self, parent=None, id=-1, title=TOOL_TITLE, size=(1000, 850))
+        wx.Frame.__init__(self, parent=None, id=-1, title=TOOL_TITLE, size=(1000, 800))
         self.Center()  # 窗口居中
 
         # 将窗体传递到子控件
