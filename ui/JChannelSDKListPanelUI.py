@@ -49,6 +49,7 @@ class JChannelSDKListPanel(wx.Panel):
                 if file_name.endswith('zip'):
 
                     sdk_file_path = os.path.join(parent, file_name)
+
                     sdk_file_new_path = sdk_file_path.replace(down_path_dir + sys_tag, '')
                     sdk_file_info = os.path.splitext(sdk_file_new_path)[0].split(sys_tag)
 
@@ -60,7 +61,7 @@ class JChannelSDKListPanel(wx.Panel):
                     sdk_info_item[SDK_ID] = sdk_id
                     sdk_info_item[SDK_NAME] = sdk_name
                     sdk_info_item[SDK_VERSION] = sdk_version
-                    sdk_info_item[SDK_PATH] = sdk_file_path
+                    sdk_info_item[SDK_PATH] = sdk_file_path.decode('cp936').encode('utf-8')
 
                     sdk_list_data.append(sdk_info_item)
 
