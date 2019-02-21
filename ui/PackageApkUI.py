@@ -70,17 +70,20 @@ class PackageApkPanel(wx.Panel):
                 # 如果已存在,先读取之前的信息,
                 with open(package_config_file, 'r') as hasConfig:
                     configs = json.load(hasConfig)
-
-                    game_apk_file_path = configs['game_apk_path']
-                    if not game_apk_file_path:
-                        self.show_message(u'请先选择游戏apk文件')
-                        return
+                    game_apk_file_path = ''
+                    if configs.has_key('game_apk_path'):
+                        game_apk_file_path = configs['game_apk_path']
+                        if not game_apk_file_path:
+                            self.show_message(u'请先选择游戏apk文件')
+                            return
 
                     # 选择了签名文件必须填写签名信息
-                    game_sign_file_path = configs['game_sign_path']
-                    if not game_sign_file_path:
-                        self.show_message(u'请先选择游戏签名文件')
-                        return
+                    game_sign_file_path = ''
+                    if configs.has_key('game_sign_path'):
+                        game_sign_file_path = configs['game_sign_path']
+                        if not game_sign_file_path:
+                            self.show_message(u'请先选择游戏签名文件')
+                            return
 
                     keystore = ''
                     store_pass = ''
@@ -88,30 +91,36 @@ class PackageApkPanel(wx.Panel):
                     key_pass = ''
                     if game_sign_file_path:
 
-                        keystore = configs['game_keystore']
-                        if not keystore:
-                            self.show_message(u'签名名称 不能为空')
-                            return
+                        if configs.has_key('game_keystore'):
+                            keystore = configs['game_keystore']
+                            if not keystore:
+                                self.show_message(u'签名名称 不能为空')
+                                return
 
-                        store_pass = configs['game_store_pass']
-                        if not store_pass:
-                            self.show_message(u'签名密码 不能为空')
-                            return
+                        if configs.has_key('game_store_pass'):
+                            store_pass = configs['game_store_pass']
+                            if not store_pass:
+                                self.show_message(u'签名密码 不能为空')
+                                return
 
-                        alias = configs['game_alias']
-                        if not alias:
-                            self.show_message(u'签名别名 不能为空')
-                            return
+                        if configs.has_key('game_alias'):
+                            alias = configs['game_alias']
+                            if not alias:
+                                self.show_message(u'签名别名 不能为空')
+                                return
 
-                        key_pass = configs['game_key_pass']
-                        if not key_pass:
-                            self.show_message(u'别名密码 不能为空')
-                            return
+                        if configs.has_key('game_key_pass'):
+                            key_pass = configs['game_key_pass']
+                            if not key_pass:
+                                self.show_message(u'别名密码 不能为空')
+                                return
 
-                    channel_file_path = configs['channel_file_path']
-                    if not channel_file_path:
-                        self.show_message(u'请先选择渠道压缩文件')
-                        return
+                    channel_file_path = ''
+                    if configs.has_key('channel_file_path'):
+                        channel_file_path = configs['channel_file_path']
+                        if not channel_file_path:
+                            self.show_message(u'请先选择渠道压缩文件')
+                            return
 
                     # 启动打包任务
                     event.GetEventObject().Disable()
