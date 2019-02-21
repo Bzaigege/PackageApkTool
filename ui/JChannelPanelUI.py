@@ -60,9 +60,9 @@ class JChannelPanel(wx.ScrolledWindow):
         self.channelConfigSaveButton = wx.Button(self, label=u'保存配置', style=wx.BORDER_MASK)
         self.channelConfigSaveButton.Bind(wx.EVT_BUTTON, self.save_channel_config)
 
-        self.channelLayout.Add(self.channelBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=6)
-        self.channelLayout.Add(self.channelConfigAddButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=6)
-        self.channelLayout.Add(self.channelConfigSaveButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=6)
+        self.channelLayout.Add(self.channelBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=5)
+        self.channelLayout.Add(self.channelConfigAddButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=5)
+        self.channelLayout.Add(self.channelConfigSaveButton, proportion=0, flag=wx.EXPAND | wx.ALL, border=5)
         self.SetSizer(self.channelLayout)
 
     # 添加配置项

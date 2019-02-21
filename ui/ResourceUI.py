@@ -8,10 +8,11 @@ from utils.ConfigUtils import *
 
 
 # 选择打包资源布局面板
-class ResourcePanel(wx.Panel):
+class ResourcePanel(wx.ScrolledWindow):
 
     def __init__(self, parent, frame, func):
-        wx.Panel.__init__(self, parent=parent, style=wx.SUNKEN_BORDER)
+        wx.ScrolledWindow.__init__(self, parent=parent, style=wx.SUNKEN_BORDER)
+        self.SetScrollbars(1, 1, 0, 400)
 
         self.window = frame
         self.function = func
@@ -90,9 +91,9 @@ class ResourcePanel(wx.Panel):
         self.channelBox.Add(self.channelFileButton, 0, wx.ALL | wx.CENTER, 3)
 
         # 添加所有栏目到布局中
-        self.resourceLayout.Add(self.gameApkBox, proportion=1, flag=wx.EXPAND | wx.ALL, border=12)
-        self.resourceLayout.Add(self.gameSignBox, proportion=1.5, flag=wx.EXPAND | wx.ALL, border=12)
-        self.resourceLayout.Add(self.channelBox, proportion=1, flag=wx.EXPAND | wx.ALL, border=12)
+        self.resourceLayout.Add(self.gameApkBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=5)
+        self.resourceLayout.Add(self.gameSignBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=5)
+        self.resourceLayout.Add(self.channelBox, proportion=0, flag=wx.EXPAND | wx.ALL, border=5)
         self.SetSizer(self.resourceLayout)
 
         # 读取上一次的配置信息
