@@ -10,7 +10,7 @@ from ui.JChannelConfigUI import JChannelConfigDialog
 # 渠道参数配置面板
 class JChannelPanel(wx.ScrolledWindow):
 
-    def __init__(self, parent, frame, func, channel_name='default', channel_id='1', channel_version='1.0.0'):
+    def __init__(self, parent, frame, func, channel_name='默认', channel_id='1', channel_version='1.0.0'):
         wx.ScrolledWindow.__init__(self, parent=parent, style=wx.SUNKEN_BORDER)
         self.SetScrollbars(1, 1, 500, 400)
 
@@ -48,7 +48,7 @@ class JChannelPanel(wx.ScrolledWindow):
         # 渠道参数配置布局
         self.channelLayout = wx.BoxSizer(wx.VERTICAL)
 
-        self.channelLabel = wx.StaticBox(self, -1, u'渠道配置')
+        self.channelLabel = wx.StaticBox(self, -1, self.channel_name + u'配置')
         self.channelBox = wx.StaticBoxSizer(self.channelLabel, wx.VERTICAL)
 
         for config_key, config_value in self.channel_configs.items():
