@@ -99,7 +99,7 @@ class JChannelPanel(wx.ScrolledWindow):
         CHANNEL_CONFIG[self.channel_id] = self.channel_configs_dict
 
         # 刷新界面
-        self.function(self.channel_name, self.channel_id, self.channel_version)
+        self.function(self.channel_name, self.channel_id, self.channel_version, '')
 
     # 保存配置信息
     def save_channel_config(self, event):
