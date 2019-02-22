@@ -3,9 +3,27 @@
 
 from collections import OrderedDict
 
-
+# 注意：这是两个全局变量，下次启动就没了
 # 定义一个字典来存储已配置渠道的配置信息
 CHANNEL_CONFIG = {}
+# 定义一个字典来存储已配置渠道的图标信息信息
+CHANNEL_ICON = {}
+
+
+# 返回图标的默认项
+def get_channel_icon(channel_name='default', channel_id='1', channel_version='1.0.0'):
+
+    default_icon = CHANNEL_ICON.get(channel_id)
+    if default_icon == None:
+        default_icon = get_default_icon()
+
+    return default_icon
+
+
+# 获取默认的Icon配置
+def get_default_icon():
+    icons = OrderedDict([(u'游戏图标', {u'选择图标': ''}), (u'游戏角标', {u'选择角标': ''})])
+    return icons
 
 
 # 获取默认的配置项

@@ -44,10 +44,20 @@ class PackageApkThread(threading.Thread):
 
         try:
 
-            channel_configs = self.window.child_spWindow.GetWindow2().channel_config_text
+            channel_configs = self.window.child_spWindow.GetWindow2().channel_config_text_objects
             build_config_str = {}
             for config_key, config_value in channel_configs.items():
                 build_config_str[config_key] = config_value.GetValue()
+
+            channel_icons = self.window.child_spWindow.GetWindow2().channel_current_icon_paths
+            game_icon = channel_icons.get(u'选择图标')
+            game_subs = channel_icons.get(u'选择角标')
+
+            if game_icon:
+                build_config_str[u'game_icon'] = game_icon
+
+            if game_icon:
+                build_config_str[u'game_subs'] = game_subs
 
             if not os.path.exists(os.path.join(self.setConfig)):
                 os.makedirs(self.setConfig)
