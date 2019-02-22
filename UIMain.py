@@ -77,7 +77,7 @@ class GuiMainFrame(wx.Frame):
         self.old_list_panel = self.resourcePanel
         self.new_list_panel = None
 
-    # 动态更新渠道的配置布局
+    # 选择渠道资源后，更新为对应的配置界面
     def up_data_ui(self, channel_name, channel_id, channel_version, channel_path):
 
         # 将每次选择的SDK信息,写到配置文件中
@@ -99,8 +99,6 @@ class GuiMainFrame(wx.Frame):
 
     # 下载完成后，更新列表
     def up_data_list(self):
-
-        print 'up_data_list'
 
         if self.new_list_panel is not None:
             self.old_list_panel.Destroy()
