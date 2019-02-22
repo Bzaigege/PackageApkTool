@@ -2,6 +2,7 @@
 # -*- coding:utf-8 -*-
 
 import os
+import shutil
 from utils.LogUtils import *
 from xml.dom.minidom import *
 from PIL import Image,ImageEnhance
@@ -17,16 +18,45 @@ RIGHT_BOTTOM = 'rb'
 
 
 # 合并图标资源和角标(默认在右下角)
-def merge_icon_subscript(task_id, temp_path, channel_path, layout=RIGHT_BOTTOM):
+def merge_icon_subscript(task_id, temp_path, channel_path, build_config, layout=RIGHT_BOTTOM):
 
     logger = LogUtils.sharedInstance(task_id)
 
-    channel_icon_path = os.path.join(channel_path, 'icon')
-    if not os.path.isdir(channel_icon_path):
-        logger.info(u'渠道icon目录不存在，无法进行合并')
-        return 0, u'渠道icon目录不存在，无法进行合并'
+    # 读取配置信息
+    game_icon_path = ''
+    game_icon_file_name = ''
+    if build_config.has_key('game_icon'):
+        game_icon_path = build_config['game_icon']
+        game_icon_file_name = os.path.basename(game_icon_path)
 
+    game_subs_path = ''
+    game_subs_name = ''
+    if build_config.has_key('game_subs'):
+        game_subs_path = build_config['game_subs']
+        game_subs_name = os.path.basename(game_subs_path)
+
+    # 处理角标目录
+    channel_icon_path = os.path.join(channel_path, 'icon')
     channel_icon_name = '%s.png' % layout
+    if game_subs_path:
+        if not os.path.isdir(channel_icon_path):
+            os.makedirs(channel_icon_path)
+
+        icon_drawable = os.path.join(channel_icon_path, 'drawable')
+        if not os.path.isdir(icon_drawable):
+            os.makedirs(icon_drawable)
+        else:
+            shutil.rmtree(icon_drawable)
+
+        # 将角标拷贝到该目录内
+        shutil.copy(game_subs_path, icon_drawable)
+        channel_subs_file_path = os.path.join(icon_drawable, game_subs_name)
+        rename_file(channel_subs_file_path, channel_icon_name)
+
+    else:
+        if not os.path.isdir(channel_icon_path):
+            logger.info(u'渠道icon目录不存在，无法进行合并')
+            return 0, u'渠道icon目录不存在，无法进行合并'
 
     # 读取androidManifest图标配置信息
     game_android_manifest = os.path.join(temp_path, 'AndroidManifest.xml')
@@ -43,6 +73,13 @@ def merge_icon_subscript(task_id, temp_path, channel_path, layout=RIGHT_BOTTOM):
         for filename in file_names:
             if filename == game_icon_name:
                 icon_path = os.path.join(parent, game_icon_name)  # 获取游戏图标路径
+
+                # 替换游戏原生的图标
+                if game_icon_path:
+                    os.remove(icon_path)
+                    shutil.copy(game_icon_path, parent)
+                    game_icon_file_path = os.path.join(parent, game_icon_file_name)
+                    rename_file(game_icon_file_path, game_icon_name)
 
                 # 根据游戏图标路径匹配渠道对应目录是否存在对应的角标图片,如果没有就到下已层循环找
                 if 'drawable' in parent:
@@ -177,3 +214,19 @@ def mark_icon(base_path, mark_path, new_img, layout=RIGHT_BOTTOM, opacity=1):
 
     except Exception as e:
         return -100, str(e)
+
+
+def rename_file(file_path, new_name):
+    icon_name = os.path.basename(file_path)
+    icon_dir = os.path.dirname(file_path) + get_system_tag()
+    icon_new_name = icon_name.replace(icon_name, new_name)
+    os.rename(icon_dir + icon_name, icon_dir + icon_new_name)
+
+
+# 获取系统目录的标志
+def get_system_tag():
+    system = platform.system()
+    if system == 'Windows':
+        return '\\'
+    else:
+        return '/'

@@ -106,9 +106,9 @@ def merger_manifest_resource(task_id, temp_path, channel_path, channel_id, chann
 
 
 # 合并图标资源
-def merge_icon_resource(task_id, temp_path, channel_path):
+def merge_icon_resource(task_id, temp_path, channel_path, build_config):
 
-    status, result = merge_icon_subscript(task_id, temp_path, channel_path)
+    status, result = merge_icon_subscript(task_id, temp_path, channel_path, build_config)
     return status, result
 
 

@@ -56,7 +56,7 @@ class PackageApkThread(threading.Thread):
             if game_icon:
                 build_config_str[u'game_icon'] = game_icon
 
-            if game_icon:
+            if game_subs:
                 build_config_str[u'game_subs'] = game_subs
 
             if not os.path.exists(os.path.join(self.setConfig)):

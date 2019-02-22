@@ -169,7 +169,7 @@ class BuildApkTask(object):
 
         # 第三步：合并游戏的Icon和角标资源
         self.logger.info(u'开始合并角标....')
-        status, result = merge_icon(self.taskId, self.TempPath, self.BaseChannelPath)
+        status, result = merge_icon(self.taskId, self.TempPath, self.BaseChannelPath, self.compile_config)
         if status == 0:
             self.logger.info(u'合并角标成功\n')
         else:

@@ -81,9 +81,9 @@ def merge_manifest(task_id, temp_path, channel_path, channel_id, channel_version
 
 
 # 合并图片资源
-def merge_icon(task_id, temp_path, channel_path):
+def merge_icon(task_id, temp_path, channel_path, build_config):
 
-    status, result = merge_icon_resource(task_id, temp_path, channel_path)
+    status, result = merge_icon_resource(task_id, temp_path, channel_path, build_config)
     return status, result
 
 
