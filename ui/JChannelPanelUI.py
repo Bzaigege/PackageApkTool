@@ -3,7 +3,7 @@
 
 import wx
 
-from ui.ChannelConfig import *
+from ui.JChannelConfig import *
 from ui.JChannelConfigUI import JChannelConfigDialog
 
 
