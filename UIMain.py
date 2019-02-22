@@ -109,12 +109,6 @@ class GuiMainFrame(wx.Frame):
 
         self.old_list_panel.Hide()
 
-    def on_size_change(self, event):
-        size = self.Size
-        self.spWindow.Size = size  # 这一句很重要
-        self.spWindow.SetSashPosition(size.height / 2)
-        self.child_spWindow.SetSashPosition((size.width / 5)*2)
-
     def on_erase_back(self, event):
         if self.first < 2 or self.flag:
             self.spWindow.SetSashPosition(0)
