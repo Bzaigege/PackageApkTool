@@ -131,6 +131,10 @@ class GuiMainFrame(wx.Frame):
         elif event_id == 203:
             self.tool_bar_listener.down_sdk_resource(self, self.up_data_list)
 
+        elif event_id == 204:
+            import webbrowser
+            webbrowser.open("https://www.jianshu.com/u/03e21de603b7")
+
 
 # 程序运行入口
 if __name__ == "__main__":
