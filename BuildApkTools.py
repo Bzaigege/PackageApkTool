@@ -62,11 +62,22 @@ def merge_resources(task_id, tools_path, temp_path, channel_path, channel_id, ch
 
 # 合并配置文件
 # todo 合并游戏的闪屏配置及SDK的特殊配置文件配置
-def merge_config(temp_path, channel_path):
+def merge_config(temp_path, channel_path, build_config):
+
+    # 读取配置信息
+    game_splash_path = ''
+    if build_config.has_key('game_splash'):
+        game_splash_path = build_config['game_splash']
+
     splash_files = os.path.join(channel_path, 'splash')
+    status, result = copy_command(game_splash_path, splash_files)
+    if not status == 0:
+        return status, result
+
     status, result = copy_command(splash_files, os.path.join(temp_path, 'assets', 'splash'))
     if not status == 0:
         return status, result
+
     return 0, u"合并闪屏及配置文件成功"
 
 

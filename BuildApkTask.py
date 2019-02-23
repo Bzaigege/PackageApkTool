@@ -159,7 +159,7 @@ class BuildApkTask(object):
 
         # 第二步： 配置渠道的闪屏图片及特殊配置文件等
         self.logger.info(u'合并配置文件....')
-        status, result = merge_config(self.TempPath, self.BaseChannelPath)
+        status, result = merge_config(self.TempPath, self.BaseChannelPath, self.compile_config)
         if status == 0:
             self.logger.info(u'合并配置文件成功\n')
         else:

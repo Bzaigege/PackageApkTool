@@ -22,7 +22,7 @@ def get_channel_icon(channel_name='default', channel_id='1', channel_version='1.
 
 # 获取默认的Icon配置
 def get_default_icon():
-    icons = OrderedDict([(u'游戏图标', {u'选择图标': ''}), (u'游戏角标', {u'选择角标': ''})])
+    icons = OrderedDict([(u'游戏图标', {u'选择图标': ''}), (u'游戏角标', {u'选择角标': ''}), (u'游戏闪屏', {u'选择闪屏': ''})])
     return icons
 
 

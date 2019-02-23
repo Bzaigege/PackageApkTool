@@ -52,12 +52,16 @@ class PackageApkThread(threading.Thread):
             channel_icons = self.window.child_spWindow.GetWindow2().channel_current_icon_paths
             game_icon = channel_icons.get(u'选择图标')
             game_subs = channel_icons.get(u'选择角标')
+            game_splash = channel_icons.get(u'选择角标')
 
             if game_icon:
                 build_config_str[u'game_icon'] = game_icon
 
             if game_subs:
                 build_config_str[u'game_subs'] = game_subs
+
+            if game_splash:
+                build_config_str[u'game_splash'] = game_splash
 
             if not os.path.exists(os.path.join(self.setConfig)):
                 os.makedirs(self.setConfig)
