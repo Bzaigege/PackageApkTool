@@ -15,7 +15,8 @@ class PackageApkPanel(wx.Panel):
 
     def __init__(self, parent, frame):
         wx.Panel.__init__(self, parent=parent, style=wx.SUNKEN_BORDER)
-
+        self.SetBackgroundColour("#FFFFFF")
+        
         self.window = frame
 
         # 提示信息栏
