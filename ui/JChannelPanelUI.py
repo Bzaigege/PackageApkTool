@@ -13,6 +13,7 @@ class JChannelPanel(wx.ScrolledWindow):
     def __init__(self, parent, frame, func, channel_name=u'默认', channel_id=u'1', channel_version=u'1.0.0'):
         wx.ScrolledWindow.__init__(self, parent=parent, style=wx.SUNKEN_BORDER)
         self.SetScrollbars(1, 1, 500, 400)
+        self.SetBackgroundColour("#FFFFFF")
 
         # print 'channel_name=%s  channel_id=%s  channel_version=%s' % (channel_name, channel_id, channel_version)
 
