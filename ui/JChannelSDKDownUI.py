@@ -25,8 +25,8 @@ CHANNEL_DOWN_URL = 'down_url'  # 下载地址
 # 弹出SDK下载框
 class JChannelSDKDownDialog(wx.Dialog):
 
-    def __init__(self, parent, func):
-        super(JChannelSDKDownDialog, self).__init__(parent, title='下载渠道SDK资源', size=(800, 700))
+    def __init__(self, parent, frame_size, func):
+        super(JChannelSDKDownDialog, self).__init__(parent, title='下载渠道SDK资源', size=frame_size)
         self.Center()  # 窗口居中
 
         self.panel = wx.Panel(self)
