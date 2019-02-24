@@ -16,8 +16,8 @@ TOOL_TITLE = u'游戏打渠道包工具'
 # 显示主页面
 class GuiMainFrame(wx.Frame):
 
-    def __init__(self, flag=True):
-        wx.Frame.__init__(self, parent=None, id=-1, title=TOOL_TITLE, size=(1000, 800))
+    def __init__(self, frame_size, flag=True):
+        wx.Frame.__init__(self, parent=None, id=-1, title=TOOL_TITLE, size=frame_size)
         self.Center()  # 窗口居中
 
         # 将窗体传递到子控件
@@ -139,7 +139,10 @@ class GuiMainFrame(wx.Frame):
 # 程序运行入口
 if __name__ == "__main__":
     app = wx.App()
-    frame = GuiMainFrame()
+    green_size = wx.DisplaySize()
+    a = green_size[0]*0.7
+    b = green_size[1]*0.85
+    frame = GuiMainFrame((a, b))
     frame.Show()
     app.MainLoop()
 
