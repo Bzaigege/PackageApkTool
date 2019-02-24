@@ -3,6 +3,8 @@
 ## 项目介绍
 PackageApkTool 为手游SDK联运系统打包系统核心模块，用于快速便捷的帮助游戏包打入渠道SDK资源生成游戏-渠道包，快速上架渠道上线。
 
+致敬易接打包工具！！！
+
 
 ## 项目前提
 使用该项目的前提条件是，游戏包体已经接入手游SDK框架Demo的SDK接口及申请好了对应的渠道参数信息。
@@ -20,13 +22,15 @@ PackageApkTool 为手游SDK联运系统打包系统核心模块，用于快速�
 ## 项目实现功能
 
 * 实现游戏和渠道assets/libs/res/AndroidManifest.xml资源的动态合并
-* 渠道资源及参数的自动化修改及支持多种类型解析及修改，如xml/text/ini/pro/json等类型文件
-* 游戏Icon和渠道角标的合并
-* 游戏闪屏和渠道闪屏逻辑兼容处理
+* 实现整体UI界面的可视化配置。
+* 实现渠道资源的服务器下载功能。（注意：当前下载资源只是用于模拟下载功能，没有实际用途，需开发者自行配置）
+* 支持渠道参数可视化差异性配置，及支持多种类型解析及修改，如xml/text/ini/pro/json等类型文件
+* 支持游戏Icon和角标的可视化配置，及Icon和角标的合并
+* 支持游戏闪屏可视化配置，及游戏闪屏和渠道闪屏逻辑兼容处理
+* 支持游戏的包体输出路径，签名信息的可视化配置。
 * 支持动态修改游戏的minSdk、TargetSdk、包名等配置
-* 支持第三方库多包名R文件资源引用
-* 支持渠道参数可视化差异性配置
-* 打包过程的日志信息显示及日志输出
+* 支持游戏第三方库多包名R文件资源引用配置,在渠道参数栏填写 R_package为字符数组["a","b"] 即可。
+* 支持打包过程的日志信息显示及日志输出
 
 
 ## 项目功能使用示例
@@ -39,7 +43,7 @@ DeskDemo：
 
 WorkSpace为工作目录，UIMain.exe为可执行文件
 
-PackageResource：
+PackageResource：内置打包示例资源
 
 ![image text](https://github.com/Bzaigege/PackageApkTool/blob/master/git/PackageResourceDir.png)
 
@@ -54,9 +58,9 @@ lexiang_1_1.0.0.zip 为渠道资源包，格式为：渠道名_渠道ID_渠道�
 ### 配置参数说明：
 
 不同的渠道配置可通过参数配置栏填写，包括动态修改游戏的minSdk、TargetSdk、包名等配置。配置完毕后会写到对应的配置文件里，
-编译过程用到的参数都可以在这里配置对应的Key_Value值，目前只针对部分渠道做适配修改，如有额外渠道适配或当前适配参数Key不满足需求时，需要修改渠道适配代码[代码地址](https://github.com/Bzaigege/PackageApkTool/tree/master/channel/special)还有UI配置项
+编译过程用到的参数都可以在这里配置对应的Key_Value值。
 
-目前只适配十多常用渠道，如果有拓展，可自行添加代码修改。也可以贡献代码上传到该库
+目前只适配十多常用渠道适配修改，如有额外渠道适配或当前适配参数Key不满足需求时，需要修改渠道适配代码[代码地址](https://github.com/Bzaigege/PackageApkTool/tree/master/channel/special)还有UI配置项[代码地址](https://github.com/Bzaigege/PackageApkTool/blob/master/ui/JChannelConfig.py)。如果有拓展，可自行添加代码修改，也可以贡献代码上传到该库
 
 ### 渠道资源包说明：
 格式为：渠道名_渠道ID_渠道版本。 内置为渠道资源目录 
