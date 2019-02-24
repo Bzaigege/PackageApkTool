@@ -71,8 +71,12 @@ class ToolBarEventListener(object):
 
         frame = window
         func = updata_func
+        
+        green_size = frame.Size
+        a = green_size[0] * 0.8
+        b = green_size[1] * 0.8
 
-        down_dlg = JChannelSDKDownDialog(frame, func)
+        down_dlg = JChannelSDKDownDialog(frame, (a, b), func)
         if down_dlg.IsEnabled():
             frame.Enable(enable=False)
             if not down_dlg.ShowModal():
