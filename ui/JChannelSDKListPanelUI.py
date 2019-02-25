@@ -61,7 +61,7 @@ class JChannelSDKListPanel(wx.Panel):
                     sdk_file_new_path = sdk_file_path.replace(down_path_dir + sys_tag, '')
                     sdk_file_info = os.path.splitext(sdk_file_new_path)[0].split(sys_tag)
 
-                    sdk_name = sdk_file_info[0].decode('cp936').encode('utf-8')
+                    sdk_name = self.get_local_name(sdk_file_info[0])
                     sdk_version = sdk_file_info[1]
                     sdk_id = sdk_file_info[2].split('_')[1]
 
@@ -69,7 +69,7 @@ class JChannelSDKListPanel(wx.Panel):
                     sdk_info_item[SDK_ID] = sdk_id
                     sdk_info_item[SDK_NAME] = sdk_name
                     sdk_info_item[SDK_VERSION] = sdk_version
-                    sdk_info_item[SDK_PATH] = sdk_file_path.decode('cp936').encode('utf-8')
+                    sdk_info_item[SDK_PATH] = self.get_local_name(sdk_file_path)
 
                     sdk_list_data.append(sdk_info_item)
 
@@ -82,6 +82,14 @@ class JChannelSDKListPanel(wx.Panel):
             return '\\'
         else:
             return '/'
+
+    # 获取名称
+    def get_local_name(self, str):
+        system = platform.system()
+        if system == 'Windows':
+            return str.decode('cp936').encode('utf-8')
+        else:
+            return str
 
     # 选择渠道资源后，更新渠道配置UI
     def on_up_data_channel_ui(self, sdk_id, sdk_name, sdk_version, sdk_path):
@@ -119,7 +127,7 @@ class MySDKList(ULC.UltimateListCtrl):
             sdk_icon = wx.StaticBitmap(self, -1, icon_bmp, (35, 35))
 
             # 添加下载按钮
-            sdk_choose_button = wx.Button(self, label='选择', style=wx.BORDER_MASK, size=((space_length*1.8)-5, 28))
+            sdk_choose_button = wx.Button(self, label='选择', size=((space_length*1.8)-5, 28))
 
             button_marks = {}  # 存储渠道信息
             button_marks[SDK_ID] = str(sdk_id)

@@ -19,8 +19,13 @@ def execute_command(cmd):
                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     sout, serr = res.communicate()
 
-    print sout.decode('cp936').encode('utf-8')
-    return res.returncode, sout.decode('cp936').encode('utf-8')
+    system = platform.system()
+    if system == 'Windows':
+        print sout.decode('cp936').encode('utf-8')
+        return res.returncode, sout.decode('cp936').encode('utf-8')
+    else:
+        print sout
+        return res.returncode, sout
 
 
 def copy_command(files_path, copy_path):

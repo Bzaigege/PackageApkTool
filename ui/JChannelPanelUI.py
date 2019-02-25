@@ -79,7 +79,7 @@ class JChannelPanel(wx.ScrolledWindow):
         for config_key, config_value in self.channel_configs.items():
             self.add_channel_config(config_key, config_value)
 
-        self.channelConfigAddButton = wx.Button(self, label=u'添加配置项', style=wx.BORDER_MASK)
+        self.channelConfigAddButton = wx.Button(self, label=u'添加配置项')
         self.channelConfigAddButton.Bind(wx.EVT_BUTTON, self.on_add_config)
         self.channelParamsLayout.Add(self.channelConfigAddButton, 0, wx.EXPAND | wx.ALL | wx.CENTER, 0)
 
@@ -88,7 +88,7 @@ class JChannelPanel(wx.ScrolledWindow):
             for icon_value, icon_path in icon_object.items():
                 self.add_channel_icon(icon_key, icon_value, icon_path)
 
-        self.channelSaveButton = wx.Button(self, label=u'保存配置', style=wx.BORDER_MASK)
+        self.channelSaveButton = wx.Button(self, label=u'保存配置')
         self.channelSaveButton.Bind(wx.EVT_BUTTON, self.save_channel_config)
 
         self.channelLayout.Add(self.channelBox, 0, wx.EXPAND | wx.ALL, 6)
@@ -116,7 +116,7 @@ class JChannelPanel(wx.ScrolledWindow):
 
         self.channelIcon = wx.BoxSizer(wx.HORIZONTAL)
         self.channelIconText = wx.StaticText(self, -1, icon_key)
-        self.channelIconButton = wx.Button(self, -1, label=icon_value, style=wx.BORDER_MASK, size=(50, 24))
+        self.channelIconButton = wx.Button(self, -1, label=icon_value, size=(50, 24))
 
         self.channel_current_icon_paths[icon_value] = icon_path
 

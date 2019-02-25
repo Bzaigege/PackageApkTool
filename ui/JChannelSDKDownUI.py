@@ -160,7 +160,7 @@ class MyChannelList(ULC.UltimateListCtrl):
             channel_icon = wx.StaticBitmap(self, -1, icon_bmp, (35, 35))
 
             # 添加下载按钮
-            channel_down_button = wx.Button(self, label='下载', style=wx.BORDER_MASK, size=((space_length*2)-5, 28))
+            channel_down_button = wx.Button(self, label='下载', size=((space_length*2)-5, 28))
             if not channel_new_down_url:
                 channel_down_button.SetLabel('无法下载')
                 channel_down_button.SetBackgroundColour('#A9A9A9')
