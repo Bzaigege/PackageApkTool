@@ -108,8 +108,9 @@ class JChannelSDKDownDialog(wx.Dialog):
                 warning_box.Destroy()
 
         else:
-            self.Destroy()
+            self.EndModal(wx.ID_CANCEL)
             self.func()
+            self.Destroy()
 
 
 # 自定义排序列表(可以添加控件的列表)

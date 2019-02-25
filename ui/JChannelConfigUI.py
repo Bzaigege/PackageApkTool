@@ -38,7 +38,9 @@ class JChannelConfigDialog(wx.Dialog):
         config_key = self.config_key_text.GetValue()
         config_value = self.config_value_text.GetValue()
         self.func(config_key, config_value)
+        self.EndModal(wx.ID_CANCEL)
         self.Destroy()  # 销毁隐藏Dialog
 
     def cancel_event(self, event):
+        self.EndModal(wx.ID_CANCEL)
         self.Destroy()  # 销毁隐藏Dialog
