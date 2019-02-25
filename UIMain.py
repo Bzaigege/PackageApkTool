@@ -74,7 +74,7 @@ class GuiMainFrame(wx.Frame):
         self.statusbar = self.CreateStatusBar()
         self.statusbar.SetFieldsCount(2)
         self.statusbar.SetStatusWidths([-7, -2])
-        self.statusbar.SetStatusText(u' 注意该工具仅供学习使用, 切勿用于商业用途!', 0)
+        self.statusbar.SetStatusText(u' 注意该工具仅供学习使用, 切勿用于商业用途, 违者必究!', 0)
         self.statusbar.SetStatusText(u' 若有问题请联系：448774260@qq.com', 1)
 
         self.old_panel = self.channelPanel
