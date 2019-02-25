@@ -29,6 +29,7 @@ class JChannelSDKDownDialog(wx.Dialog):
         super(JChannelSDKDownDialog, self).__init__(parent, title='下载渠道SDK资源', size=frame_size)
         self.Center()  # 窗口居中
 
+        self.window = parent
         self.panel = wx.Panel(self)
         self.main_layout = None
         self.main_channel_list = None
@@ -46,10 +47,17 @@ class JChannelSDKDownDialog(wx.Dialog):
 
         self.main_layout = wx.BoxSizer(wx.VERTICAL)
 
+        green_size = self.window.Size
+        a = green_size[0]*0.8
+        b = green_size[1]*0.8
+
+        space_length = a/15
+
         # 创建排序列表列标题
-        main_list_columns = [("渠道ID", 50), ("图标", 50), ("SDK名称", 180), ("SDK别名", 120), ("SDK当前版本", 90),
-                             ("SDK最新版本", 90), ("操作项", 70), ("状态栏", 115)]
-        self.main_channel_list = MyChannelList(self.panel, (800, 700), main_list_columns, self.channel_data)
+        main_list_columns = [("渠道ID", space_length), ("图标", space_length), ("SDK名称", space_length*3),
+                             ("SDK别名", space_length*2), ("SDK当前版本", space_length*1.8), ("SDK最新版本", space_length*1.8),
+                             ("操作项", space_length*2), ("状态栏", space_length*2)]
+        self.main_channel_list = MyChannelList(self.panel, (a, b), space_length, main_list_columns, self.channel_data)
 
         self.main_layout.Add(self.main_channel_list, 1, wx.EXPAND | wx.ALL, 2)
         self.panel.SetSizer(self.main_layout)
@@ -107,7 +115,7 @@ class JChannelSDKDownDialog(wx.Dialog):
 # 自定义排序列表(可以添加控件的列表)
 class MyChannelList(ULC.UltimateListCtrl):
 
-    def __init__(self, parent, list_size, columns, channel_data):
+    def __init__(self, parent, list_size, space_length, columns, channel_data):
         """
         list_size 为 (750, 700), 定义列表大小
         columns 为数组形式[("AA", 100), ("BB", 100)], 定义表头名称及大小
@@ -152,7 +160,7 @@ class MyChannelList(ULC.UltimateListCtrl):
             channel_icon = wx.StaticBitmap(self, -1, icon_bmp, (35, 35))
 
             # 添加下载按钮
-            channel_down_button = wx.Button(self, label='下载', style=wx.BORDER_MASK, size=(65, 28))
+            channel_down_button = wx.Button(self, label='下载', style=wx.BORDER_MASK, size=((space_length*2)-5, 28))
             if not channel_new_down_url:
                 channel_down_button.SetLabel('无法下载')
                 channel_down_button.SetBackgroundColour('#A9A9A9')
@@ -167,7 +175,7 @@ class MyChannelList(ULC.UltimateListCtrl):
                     channel_down_button.SetBackgroundColour('#A9A9A9')
 
             # 添加进度条
-            down_progress = wx.Gauge(self, -1, range=100, style=wx.GA_HORIZONTAL | wx.GA_SMOOTH, size=(110, 28))
+            down_progress = wx.Gauge(self, -1, range=100, style=wx.GA_HORIZONTAL | wx.GA_SMOOTH, size=((space_length*2)-5, 28))
 
             button_marks = {}  # 存储下载信息
             button_marks[u'id'] = item

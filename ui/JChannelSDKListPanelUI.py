@@ -30,9 +30,16 @@ class JChannelSDKListPanel(wx.Panel):
         self.sdkLabel = wx.StaticBox(self, -1, u'已下载SDK列表')
         self.sdkBox = wx.StaticBoxSizer(self.sdkLabel, wx.VERTICAL)
 
+        green_size = self.window.Size
+        a = (green_size[0]/5)*2
+        b = green_size[1]/2
+
+        space_length = a/10
+
         # 创建排序列表列标题
-        main_list_columns = [("渠道ID", 50), ("图标", 45), ("SDK名称", 110), ("SDK版本", 80), ("选择", 70)]
-        self.main_sdk_list = MySDKList(self, (400, 500), main_list_columns, self.channel_data, self.function)
+        main_list_columns = [("渠道ID", space_length*1.2), ("图标", space_length), ("SDK名称", space_length*3.3),
+                             ("SDK版本", space_length*2), ("选择", space_length*1.8)]
+        self.main_sdk_list = MySDKList(self, (a, b), space_length, main_list_columns, self.channel_data, self.function)
 
         self.sdkBox.Add(self.main_sdk_list, 1, wx.ALL | wx.EXPAND, 0)
         self.main_layout.Add(self.sdkBox, 0, wx.EXPAND | wx.ALL, 5)
@@ -84,7 +91,7 @@ class JChannelSDKListPanel(wx.Panel):
 # 自定义排序列表(可以添加控件的列表)
 class MySDKList(ULC.UltimateListCtrl):
 
-    def __init__(self, parent, list_size, columns, channel_data, updata_func):
+    def __init__(self, parent, list_size, space_length, columns, channel_data, updata_func):
         """
         list_size 为 (750, 700), 定义列表大小
         columns 为数组形式[("AA", 100), ("BB", 100)], 定义表头名称及大小
@@ -112,7 +119,7 @@ class MySDKList(ULC.UltimateListCtrl):
             sdk_icon = wx.StaticBitmap(self, -1, icon_bmp, (35, 35))
 
             # 添加下载按钮
-            sdk_choose_button = wx.Button(self, label='选择', style=wx.BORDER_MASK, size=(65, 28))
+            sdk_choose_button = wx.Button(self, label='选择', style=wx.BORDER_MASK, size=((space_length*1.8)-5, 28))
 
             button_marks = {}  # 存储渠道信息
             button_marks[SDK_ID] = str(sdk_id)

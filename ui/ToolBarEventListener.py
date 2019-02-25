@@ -55,9 +55,9 @@ class ToolBarEventListener(object):
         # 设置包体输出目录
         apk_out_dir = ''
         dlg = wx.DirDialog(frame, u"选择文件夹", style=wx.DD_DEFAULT_STYLE)
+        dlg.Center()  # 窗口居中
         if dlg.ShowModal() == wx.ID_OK:
-            print dlg.GetPath()  # 文件夹路径
-            apk_out_dir = dlg.GetPath()
+            apk_out_dir = dlg.GetPath()  # 文件夹路径
 
         dlg.Destroy()
 
@@ -87,6 +87,7 @@ class ToolBarEventListener(object):
 
         filename = ''
         dialog = wx.FileDialog(pand, title_name, default_dir, wildcard=wildcard_text)
+        dialog.Center()  # 窗口居中
         if dialog.ShowModal() == wx.ID_OK:
             filename = dialog.GetPath()
         dialog.Destroy()

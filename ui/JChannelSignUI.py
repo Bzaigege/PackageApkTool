@@ -101,6 +101,7 @@ class JChannelSignDialog(wx.Dialog):
 
         filename = ''
         dialog = wx.FileDialog(pand, title_name, default_dir, wildcard=wildcard_text)
+        dialog.Center()  # 窗口居中
         if dialog.ShowModal() == wx.ID_OK:
             filename = dialog.GetPath()
         dialog.Destroy()
