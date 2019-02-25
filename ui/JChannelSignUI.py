@@ -3,6 +3,7 @@
 
 import wx
 import os
+import platform
 
 
 # 弹出配置签名信息框
@@ -83,11 +84,15 @@ class JChannelSignDialog(wx.Dialog):
                 return
 
         self.func(game_sign_file_path, keystore, store_pass, alias, key_pass)
-        self.EndModal(wx.ID_CANCEL)
+        system = platform.system()
+        if not system == 'Windows':
+            self.EndModal(wx.ID_CANCEL)
         self.Destroy()  # 销毁隐藏Dialog
 
     def cancel_event(self, event):
-        self.EndModal(wx.ID_CANCEL)
+        system = platform.system()
+        if not system == 'Windows':
+            self.EndModal(wx.ID_CANCEL)
         self.Destroy()  # 销毁隐藏Dialog
 
     # 选择签名文件

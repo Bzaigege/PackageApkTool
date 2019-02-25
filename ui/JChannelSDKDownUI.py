@@ -5,6 +5,7 @@ import wx
 import os
 import shutil
 import json
+import platform
 import threading
 import requests
 from contextlib import closing
@@ -108,7 +109,9 @@ class JChannelSDKDownDialog(wx.Dialog):
                 warning_box.Destroy()
 
         else:
-            self.EndModal(wx.ID_CANCEL)
+            system = platform.system()
+            if not system == 'Windows':
+                self.EndModal(wx.ID_CANCEL)
             self.func()
             self.Destroy()
 
