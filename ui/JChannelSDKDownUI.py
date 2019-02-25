@@ -164,7 +164,6 @@ class MyChannelList(ULC.UltimateListCtrl):
             channel_down_button = wx.Button(self, label='下载', size=((space_length*2)-5, 28))
             if not channel_new_down_url:
                 channel_down_button.SetLabel('无法下载')
-                channel_down_button.SetBackgroundColour('#A9A9A9')
 
             version_error = False
             if not channel_current_version == '未下载':
@@ -173,7 +172,6 @@ class MyChannelList(ULC.UltimateListCtrl):
                 else:
                     version_error = True
                     channel_down_button.SetLabel('无法下载')
-                    channel_down_button.SetBackgroundColour('#A9A9A9')
 
             # 添加进度条
             down_progress = wx.Gauge(self, -1, range=100, style=wx.GA_HORIZONTAL | wx.GA_SMOOTH, size=((space_length*2)-5, 28))
