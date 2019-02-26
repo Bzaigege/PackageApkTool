@@ -314,6 +314,7 @@ class DownSdkThread(threading.Thread):
             self.down_file(self.url)
 
         except Exception as e:
+            self.show_warning("连接服务器失败 ！错误信息：%s" % str(e))
             print (str(e))
 
     # 文件下载器
