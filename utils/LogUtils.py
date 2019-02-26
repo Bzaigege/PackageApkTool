@@ -46,12 +46,15 @@ class LogUtils(object):
         if system == 'Windows':
             logs_path = logs + '\\' + logName + ".log"
             sys_log_path = sys_logs + '\\' + 'default_package_log' + ".txt"
+
         elif system == 'Darwin':  # Mac
-            logs_path = logs + '/' + 'Sys' + '/' + logName + ".log"
+            logs_path = logs + '/' + logName + ".log"
             sys_log_path = sys_logs + '/' + 'default_package_log' + ".txt"
+
         elif system == 'Linux':
-            logs_path = logs + '/' + 'Sys' + '/'+ logName + ".log"
+            logs_path = logs + '/' + logName + ".log"
             sys_log_path = sys_logs + '/' + 'default_package_log' + ".txt"
+
         else:
             logs_path = logs + '/' + logName + ".log"
             sys_log_path = sys_logs + '/' + 'default_package_log' + ".txt"
