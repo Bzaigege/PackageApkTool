@@ -32,12 +32,8 @@ class LogUtils(object):
     def set_logger(self, taskid, workpath, gameName, channelId, logName=''):
 
         logs = os.path.join(workpath, 'Logs')  # 工作目录
-        sys_logs = os.path.join(workpath, 'Logs', 'SysLogs')
         if not os.path.exists(logs):
             os.makedirs(logs)
-
-        if not os.path.exists(sys_logs):
-            os.makedirs(sys_logs)
 
         if logName == '':
             logName = '%s_%s_%s_%s' % (taskid, gameName, channelId, int(time.time()))
@@ -45,21 +41,9 @@ class LogUtils(object):
         system = platform.system()  # 区分操作系统平台
         if system == 'Windows':
             logs_path = logs + '\\' + logName + ".log"
-            sys_log_path = sys_logs + '\\' + 'default_package_log' + ".txt"
-
-        elif system == 'Darwin':  # Mac
-            logs_path = logs + '/' + logName + ".log"
-            sys_log_path = sys_logs + '/' + 'default_package_log' + ".txt"
-
-        elif system == 'Linux':
-            logs_path = logs + '/' + logName + ".log"
-            sys_log_path = sys_logs + '/' + 'default_package_log' + ".txt"
 
         else:
             logs_path = logs + '/' + logName + ".log"
-            sys_log_path = sys_logs + '/' + 'default_package_log' + ".txt"
-
-        sys.stdout = Logger(sys_log_path)
 
         fh = logging.FileHandler(logs_path)  # 文件对象
         # fh = logging.FileHandler(logs_path, encoding='utf-8')  # 文件对象(python3.6.5)
@@ -82,18 +66,3 @@ class LogUtils(object):
 
     def setLoggingToHanlder(self, handler):
         self.handler = handler
-
-
-# 将控制台的日志写到文件里面
-class Logger(object):
-
-    def __init__(self, file_name='default_package_log'):
-        self.terminal = sys.stdout
-        self.log = open(file_name, "a")
-
-    def write(self, message):
-        self.terminal.write(message)
-        self.log.write(message)
-
-    def flush(self):
-        pass
