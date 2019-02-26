@@ -346,7 +346,7 @@ class DownSdkThread(threading.Thread):
                             load_file.write(data)
                             size += len(data)
                             download_progress = size * 100 / content_size
-                            # print('\r' + '[下载进度]：%s %s' % ('>' * int(size * 100 / content_size), download_progress))
+                            print('\r' + '[下载进度]：%s %s' % ('>' * int(size * 100 / content_size), download_progress), end='')
                             self.gauge.SetValue(download_progress)
 
                     if download_progress == 100:
