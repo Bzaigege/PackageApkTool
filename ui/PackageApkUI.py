@@ -160,6 +160,3 @@ class PackageApkPanel(wx.Panel):
         dlg.ShowModal()
         dlg.Destroy()
 
-    # 写入日志信息
-    def write_log(self, msg):
-        self.logText.write(msg)

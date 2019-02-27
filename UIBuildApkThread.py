@@ -89,7 +89,7 @@ class PackageApkThread(threading.Thread):
             channelId = file_dist[1]
             channelVersion = file_dist[2]
 
-            LogUtils.sharedInstance(taskId).setLoggingToHanlder(self.write_text_log)
+            LogUtils.sharedInstance(taskId).set_ctrl_to_logging(self.window.down_panel.logText)
 
             # 将本地资源拷贝到对应的目录中
             Resources = os.path.join(DIR_WorkSpace, DIR_Resources)  # 本地模拟服务器资源目录
@@ -143,9 +143,6 @@ class PackageApkThread(threading.Thread):
         except Exception as e:
             self.window.down_panel.show_message(u'打包失败：%s' % e)
             self.window.down_panel.packageButton.Enable()
-
-    def write_text_log(self, text_str):
-        self.window.down_panel.write_log(text_str)
 
 
 # 清除本地工作目录

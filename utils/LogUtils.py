@@ -4,11 +4,21 @@ import logging
 import os
 import time
 import platform
-import sys
+import wx
 
 
-class NullHandler(logging.Handler):
-    def emit(self, record): pass
+class TextHandler(logging.Handler):
+
+    def __init__(self):
+        logging.Handler.__init__(self)
+        self.ctrl = None
+
+    def set_ctrl(self, ctrl):
+        self.ctrl = ctrl
+
+    def emit(self, record):
+        if not self.ctrl == None:
+            wx.CallAfter(self.ctrl.write, self.format(record) + "\n")
 
 
 class LogUtils(object):
@@ -22,12 +32,13 @@ class LogUtils(object):
         return LogUtils.log
 
     def __init__(self, task_id):
-        self.handler = None
+
         self.logger = logging.getLogger(task_id)
         self.level = logging.INFO
         self.fm = logging.Formatter('%(asctime)s - %(filename)s - [line:%(lineno)-d] - %(levelname)s - %(message)s')
-        h = NullHandler()
-        self.logger.addHandler(h)
+
+        self.text_ctrl = None
+        self.text_handler = TextHandler()
 
     def set_logger(self, taskid, workpath, gameName, channelId, logName=''):
 
@@ -55,14 +66,15 @@ class LogUtils(object):
         sh.setFormatter(self.fm)  # 设置格式
         self.logger.addHandler(sh)  # logger添加标准输出流（std out）
 
+        self.logger.addHandler(self.text_handler)
+
         self.logger.setLevel(logging.INFO)  # 设置从那个等级开始提示
         self.logger.info(u'开始写入日志...\n')
 
     def info(self, s):
         self.logger.info(s)
-        if not self.handler == None:
-            s = s + "\n"
-            self.handler(s)
 
-    def setLoggingToHanlder(self, handler):
-        self.handler = handler
+    def set_ctrl_to_logging(self, text_ctrl):
+        self.text_ctrl = text_ctrl
+        if not self.text_handler == None:
+            self.text_handler.set_ctrl(self.text_ctrl)
