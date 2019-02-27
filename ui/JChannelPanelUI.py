@@ -26,8 +26,8 @@ class JChannelPanel(wx.ScrolledWindow):
 
         self.channel_configs = get_channel_configs(channel_name, channel_id, channel_version)
         # 默认都添加包名
-        if not self.channel_configs.get(u'package'):
-            self.channel_configs.update({u'package': ''})
+        if not self.channel_configs.get(u'game_package'):
+            self.channel_configs.update({u'game_package': ''})
 
         self.channel_icon = get_channel_icon(channel_name, channel_id, channel_version)
 
