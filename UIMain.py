@@ -50,7 +50,7 @@ class GuiMainFrame(wx.Frame):
 
         # 工具栏
         self.ToolBar = wx.ToolBar(self, wx.ID_ANY, style=wx.TB_HORZ_LAYOUT | wx.TB_TEXT)  # 创建工具栏对象
-        toolbar_size = (30, 27)  # 设置工具栏图标大小
+        toolbar_size = (30, 28)  # 设置工具栏图标大小
 
         # 创建图标
         open_game_apk_bmp = wx.ArtProvider.GetBitmap(wx.ART_PLUS, wx.ART_TOOLBAR, toolbar_size)
