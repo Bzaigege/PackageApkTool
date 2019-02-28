@@ -49,7 +49,7 @@ class GuiMainFrame(wx.Frame):
         self.Bind(wx.EVT_ERASE_BACKGROUND, self.on_erase_back)
 
         # 工具栏
-        self.ToolBar = wx.ToolBar(self, wx.ID_ANY)  # 创建工具栏对象
+        self.ToolBar = wx.ToolBar(self, wx.ID_ANY, style=wx.TB_HORZ_LAYOUT | wx.TB_TEXT)  # 创建工具栏对象
         toolbar_size = (30, 27)  # 设置工具栏图标大小
 
         # 创建图标
@@ -60,9 +60,9 @@ class GuiMainFrame(wx.Frame):
         tool_help_bmp = wx.ArtProvider.GetBitmap(wx.ART_HELP, wx.ART_TOOLBAR, toolbar_size)
 
         # 将这图标放入工具栏
-        self.ToolBar.AddTool(200, u'导入游戏包体', open_game_apk_bmp, u'导入游戏包体')
-        self.ToolBar.AddTool(201, u'设置游戏包体输出目录', set_output_dir_bmp, u'设置游戏包体输出目录')
-        self.ToolBar.AddTool(202, u'设置游戏签名', set_sign_file_bmp, u'设置游戏签名')
+        self.ToolBar.AddTool(200, u'导入游戏', open_game_apk_bmp, u'导入游戏')
+        self.ToolBar.AddTool(201, u'设置输出目录', set_output_dir_bmp, u'设置输出目录')
+        self.ToolBar.AddTool(202, u'设置签名', set_sign_file_bmp, u'设置签名')
         self.ToolBar.AddTool(203, u'下载渠道SDK', down_sdk_bmp, u'下载渠道SDK')
         self.ToolBar.AddTool(204, u'帮助说明', tool_help_bmp, u'帮助说明')
 
