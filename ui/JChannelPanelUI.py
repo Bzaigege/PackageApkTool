@@ -37,7 +37,7 @@ class JChannelPanel(wx.ScrolledWindow):
 
         # 存储配置信息
         self.channel_configs_dict = OrderedDict({})
-        self.channel_icon_dict = OrderedDict({})
+        self.channel_icon_dict = self.channel_icon
         self.channel_current_icon_paths = {}  # 存储icon当前选择图标路径
 
         # 整体布局界面
