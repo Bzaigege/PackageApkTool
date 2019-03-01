@@ -178,10 +178,10 @@ def zipa_sign_apk(tools_path, apk_output_apk, game_name, game_version, channel_i
     status, result = apk_zipa(zipa_tool_path, sign_apk_path, final_output_apk_path)
     if status == 0:
         os.remove(sign_apk_path)
-        return status, result, final_output_apk
+        return status, result, final_output_apk, final_output_apk_path
 
     else:
-        return status, result, ''
+        return status, result, '', ''
 
 
 # 获取游戏包体原始包名

@@ -48,18 +48,17 @@ class BuildApkTask(object):
         self.TempPath = os.path.join(self.Work, 'Temp', taskId)  # 打包过程缓存路径(处理多任务资源冲突问题)
 
         # 打包完成包体输出目录
-        self.OutputApkPath = ''
+        self.OutputApkPath = os.path.join(self.Build, DIR_OutputApk, taskId)
+        self.NewOutputApkPath = ''
         dir_config = os.path.join(DIR_WorkSpace, DIR_UIConfig)
         if os.path.exists(os.path.join(dir_config, NAME_APK_OUTPUT)):
             try:
                 with open(os.path.join(dir_config, NAME_APK_OUTPUT), 'r') as cfg:
                     setting_config = json.load(cfg)
-                    self.OutputApkPath = setting_config['game_channel_apk_output_path']
+                    self.NewOutputApkPath = setting_config['game_channel_apk_output_path']
 
             except Exception as e:
-                self.OutputApkPath = os.path.join(self.Build, DIR_OutputApk, taskId)
-        else:
-            self.OutputApkPath = os.path.join(self.Build, DIR_OutputApk, taskId)
+                print str(e)
 
         # 打包过程日志输出目录
         self.logger = LogUtils.sharedInstance(taskId)
@@ -232,10 +231,15 @@ class BuildApkTask(object):
 
         # 第九步：将签名的Apk优化
         self.logger.info(u'开始优化签名apk包....')
-        status, result, final_apk = zipa_sign_apk(self.Tools, self.OutputApkPath, self.gameName,
-                                                  self.gameVersion, self.ChannelId, self.ChannelVersion)
+        status, result, final_apk, final_apk_path = zipa_sign_apk(self.Tools, self.OutputApkPath, self.gameName,
+                                                                  self.gameVersion, self.ChannelId, self.ChannelVersion)
         if status == 0:
             self.logger.info(u'优化签名apk包成功, 最终输出包：%s '% final_apk)
+            # 将包体输出到设置目录
+            if self.NewOutputApkPath:
+                if not os.path.exists(self.NewOutputApkPath):
+                    os.makedirs(self.NewOutputApkPath)
+                shutil.move(final_apk_path, self.NewOutputApkPath)
         else:
             self.logger.info(result)
             self.logger.info(u'优化签名apk包失败')
