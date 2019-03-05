@@ -36,9 +36,11 @@ def modify_jars(task_id, temp_path, channel_path):
     if not status == 0:
         return status, result
 
-    # 处理下apktool.yml文件
-    apktool_yal_path = os.path.join(temp_path, 'apktool.yml')
-    status, result = modify_apktool_yml_notCompress(apktool_yal_path)
+    system = platform.system()  # 区分操作系统平台
+    if system == 'Windows':
+        # 处理下apktool.yml文件, 压缩配置在window的字符限制
+        apktool_yal_path = os.path.join(temp_path, 'apktool.yml')
+        status, result = modify_apktool_yml_notCompress(apktool_yal_path)
 
     return status, result
 

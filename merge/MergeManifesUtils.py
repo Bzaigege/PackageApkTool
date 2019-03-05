@@ -37,7 +37,7 @@ def merger_manifest_config(task_id, temp_path, channel_path, build_config):
         game_old_package_name = gameRoot.getAttribute('package')
 
         # 处理下apktool无法识别compileSdkVersion 、compileSdkVersionCodename 等问题
-        # 还要注意，这两个字段是compileSdkVersion = 28 后才出现的,需要将targetSdkVersion设置为23以上
+        # 还要注意，这两个字段是compileSdkVersion = 28 后才出现的
         compileSdkVersion = gameRoot.getAttribute('android:compileSdkVersion')
         compileSdkVersion_name = gameRoot.getAttribute('android:compileSdkVersionCodename')
 
@@ -63,7 +63,7 @@ def merger_manifest_config(task_id, temp_path, channel_path, build_config):
 
         logger.info(u'开始修改 uses-Sdk....')
         if not game_sdk:
-            if minSdk or targetSdk or compileSdkVersion:
+            if minSdk or targetSdk:
                 sdk_node = gameDom.createElement('uses-sdk')
                 gameRoot.appendChild(sdk_node)
                 game_sdk = gameRoot.getElementsByTagName('uses-sdk')
@@ -74,10 +74,6 @@ def merger_manifest_config(task_id, temp_path, channel_path, build_config):
         if targetSdk:
             game_sdk[0].setAttribute('android:targetSdkVersion', targetSdk)
             logger.info(u'设置游戏targetSdk: %s' % targetSdk)
-
-        if compileSdkVersion:
-            game_sdk[0].setAttribute('android:targetSdkVersion', compileSdkVersion)
-            logger.info(u'设置游戏targetSdk: %s' % compileSdkVersion)
 
         # 修改完targetSdkVersion后, 删除属性
         if compileSdkVersion:
