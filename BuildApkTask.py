@@ -137,6 +137,12 @@ class BuildApkTask(object):
 
         status, result = decompile_apk(self.Tools, self.TempPath, os.path.join(self.BaseGameApkPath, self.gameApkName))
         if status == 0:
+
+            # 删除旧包体的签名信息
+            sign_dir = os.path.join(self.TempPath, 'original')
+            if os.path.exists(sign_dir):
+                shutil.rmtree(sign_dir)
+
             self.logger.info(u'反编译解包到Temp目录成功\n')
             # todo 可以在这里读取原始包体的信息，用于判断是否支持打包
 
